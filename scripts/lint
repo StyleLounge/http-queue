@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+#
+# Script for linting all source files
+#
+
+tslint -c tslint.json ./{index.ts,lib}/*.ts

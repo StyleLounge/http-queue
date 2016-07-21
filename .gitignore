@@ -1,0 +1,9 @@
+/node_modules
+/typings
+/tmp
+
+/test.js
+*.js
+*.d.ts
+*.spec.d.ts
+npm-debug.log

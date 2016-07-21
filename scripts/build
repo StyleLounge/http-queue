@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+#
+# Script for performing a build
+#
+
+rm -rf ./node_modules ./typings ./dist && npm i && npm run typings && tsc

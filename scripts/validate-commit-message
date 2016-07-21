@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+#
+# Script for validating the commit message
+#
+
+validate-commit-msg
