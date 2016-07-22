@@ -19,16 +19,13 @@
 
 import {take, put, actionChannel, call} from 'redux-saga/effects';
 
-import {
-    ADD,
-    RESTORE
-} from '../constants/actions';
+import {IManifest} from '../reducer';
 
-import {
-    remove
-} from '../actions';
+import {ADD,RESTORE} from '../constants/actions';
 
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+import {remove} from '../actions';
+
+import sendBeacon from '../utils/sendBeacon';
 
 function* worker(): any {
     const channel = yield actionChannel([
@@ -37,13 +34,20 @@ function* worker(): any {
     ]);
 
     while (true) {
-        const {payload} = yield take(channel);
+        const action = yield take(channel);
+        const manifest: IManifest = action.payload;
 
-        console.log('HANDLE REQUEST', payload);
+        try {
+            yield call(sendBeacon, manifest);
+            console.log('all good!');
+        } catch (err) {
+            console.warn(err.message);
+        }
 
-        yield delay(1000);
-
-        yield put(remove(payload.id));
+        //
+        // Remove the manifest from the queue (even when the request could not be send).
+        //
+        yield put(remove(manifest.id));
     }
 }
 

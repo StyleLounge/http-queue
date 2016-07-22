@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "lodash": "registry:npm/lodash#4.0.0+20160701205107"
+    "lodash": "registry:npm/lodash#4.0.0+20160701205107",
+    "request": "registry:npm/request#2.69.0+20160428223725"
   },
   "globalDependencies": {
     "redux-actions": "registry:dt/redux-actions#0.8.0+20160521154116"
