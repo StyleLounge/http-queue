@@ -17,34 +17,10 @@
  *
  */
 
-import {take, put, actionChannel, call} from 'redux-saga/effects';
+import {createAction} from "redux-actions";
 
-import {
-    ADD,
-    RESTORE
-} from '../constants/actions';
+import {ADD} from "../constants/actions";
 
-import {
-    remove
-} from '../actions';
+const add = createAction(ADD);
 
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-
-function* worker(): any {
-    const channel = yield actionChannel([
-        ADD,
-        RESTORE
-    ]);
-
-    while (true) {
-        const {payload} = yield take(channel);
-
-        console.log('HANDLE REQUEST', payload);
-
-        yield delay(1000);
-
-        yield put(remove(payload.id));
-    }
-}
-
-export default worker;
+export default add;

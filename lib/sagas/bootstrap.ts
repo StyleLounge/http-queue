@@ -20,17 +20,17 @@
 import {put, PutEffect} from 'redux-saga/effects';
 import {LOCALSTORAGE_NAMESPACE} from '../constants/localStorage';
 
-import {
-    RESTORE
-} from '../constants/actions';
+import {restore} from '../actions';
 
 function* bootstrap(): any {
     const items: Object[] = JSON.parse(window.localStorage.getItem(LOCALSTORAGE_NAMESPACE) || '[]');
 
     if (items) {
         for (let key in items) {
-            console.log({type: RESTORE, payload: items[key]});
-            yield put({type: RESTORE, payload: items[key]});
+            const item = items[key];
+
+            console.log(restore(item));
+            yield put(restore(item));
         }
     }
 }

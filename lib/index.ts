@@ -31,19 +31,21 @@ import createStore from "./store";
 import sagas from "./sagas";
 import reducer from "./reducer";
 
-import {
-    ADD,
-} from "./constants/actions";
+import {add} from "./actions";
 
 const middlewares = {sagas};
 
 const queue = () => {
     const store = createStore({reducer, middlewares});
 
-    return (manifest: IRequest) =>
-        store.dispatch({payload: assign({}, manifest, {
-            id: uuid(),
-        }), type: ADD});
+    const schedule = (manifest: IRequest) =>
+        store.dispatch(
+            add(assign({}, manifest, {
+                id: uuid(),
+            }))
+        );
+
+    return schedule;
 };
 
 export default queue;
