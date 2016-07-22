@@ -17,15 +17,17 @@
  *
  */
 
-import {assign} from 'lodash';
+import {assign, filter} from 'lodash';
 import {handleActions, Action, ReducerMap} from 'redux-actions';
 
 import {
     ADD,
-    RESTORE
+    RESTORE,
+    REMOVE
 } from '../constants/actions';
 
 export interface IManifest {
+    id: number;
     verb: string;
     url: string;
     data?: Object;
@@ -43,11 +45,19 @@ function createState(): IState {
     };
 };
 
-const handlers: ReducerMap<IState, IManifest> = {
+const handlers: ReducerMap<IState, IManifest | number> = {
     [ADD]: (state: IState, action: Action<IManifest>): IState =>
-        assign({}, state, {manifests: [...state.manifests, action.payload]}) as IState,
+        assign({}, state, {
+            manifests: [...state.manifests, action.payload]
+        }) as IState,
     [RESTORE]: (state: IState, action: Action<IManifest>): IState =>
-        assign({}, state, {manifests: [...state.manifests, action.payload]}) as IState
+        assign({}, state, {
+            manifests: [...state.manifests, action.payload]
+        }) as IState,
+    [REMOVE]: (state: IState, action: Action<number>): IState =>
+        assign({}, state, {
+            manifests: filter(state.manifests, (manifest: IManifest) => manifest.id !== action.payload)
+        }) as IState
 };
 
 export default handleActions<IState, IManifest>(handlers, createState());

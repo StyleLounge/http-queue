@@ -19,6 +19,8 @@
 
 import {assign} from "lodash";
 
+import uuid from "./utils/uuid";
+
 export interface IRequest {
     verb: string;
     url: string;
@@ -39,7 +41,9 @@ const queue = () => {
     const store = createStore({reducer, middlewares});
 
     return (manifest: IRequest) =>
-        store.dispatch({payload: assign({}, manifest, {id: Date.now()}), type: ADD});
+        store.dispatch({payload: assign({}, manifest, {
+            id: uuid(),
+        }), type: ADD});
 };
 
 export default queue;

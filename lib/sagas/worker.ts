@@ -17,8 +17,31 @@
  *
  */
 
+import {take, put, actionChannel, call} from 'redux-saga/effects';
+
+import {
+    ADD,
+    REMOVE,
+    RESTORE
+} from '../constants/actions';
+
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
 function* worker(): any {
-    
+    const channel = yield actionChannel([
+        ADD,
+        RESTORE
+    ]);
+
+    while (true) {
+        const {payload} = yield take(channel);
+
+        console.log('HANDLE REQUEST', payload);
+
+        yield delay(1000);
+
+        yield put({type: REMOVE, payload: payload.id});
+    }
 }
 
 export default worker;

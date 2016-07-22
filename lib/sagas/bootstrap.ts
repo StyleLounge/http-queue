@@ -29,6 +29,7 @@ function* bootstrap(): any {
 
     if (items) {
         for (let key in items) {
+            console.log({type: RESTORE, payload: items[key]});
             yield put({type: RESTORE, payload: items[key]});
         }
     }
