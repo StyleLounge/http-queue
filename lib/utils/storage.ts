@@ -17,7 +17,11 @@
  *
  */
 
-const Basil = require("basil.js");
+import * as debug from 'debug';
+
+const Basil = require('basil.js');
+
+const dbg = debug('@stylelounge/http-queue:storage');
 
 const NAMESPACE = "@stylelounge/http-queue";
 const TTL = (60 * 1000) * 60 * 24 * 2; // 2 days
@@ -72,13 +76,15 @@ function setData(data: Object): void {
     const currentState = getRawData();
 
     if (!currentState.ttl || currentState.ttl < Date.now()) {
+        dbg('Okay, state does not exist or seems pretty old. Create new one ...');
+
         const state = createState();
 
         setRawData(state);
     }
 }
 
-const api: IStorage {
+const api: IStorage = {
     setData,
     getData
 };

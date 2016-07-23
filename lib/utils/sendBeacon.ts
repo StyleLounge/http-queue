@@ -16,10 +16,12 @@
  * SNM Style Net Media GmbH.
  *
  */
+import * as debug from 'debug';
+import * as request from 'request';
 
 import {IManifest} from '../reducer';
 
-import * as request from 'request';
+const dbg = debug('@stylelounge/http-queue:utils:sendBeacon');
 
 const sendBeacon = (manifest: IManifest) =>
     new Promise((resolve, reject) => {
@@ -27,9 +29,9 @@ const sendBeacon = (manifest: IManifest) =>
         const nav: any = navigator as any;
 
         if (nav.sendBeacon) {
-            const data = new Blob([JSON.stringify(manifest.data)], {type : 'application/json; charset=UTF-8'});
+            dbg(`Okay, cool, 'sendBeacon' is available for sending ${manifest.url}.`);
 
-            console.log(data);
+            const data = new Blob([JSON.stringify(manifest.data)], {type : 'application/json; charset=UTF-8'});
 
             nav.sendBeacon(manifest.url, data);
 
@@ -42,6 +44,8 @@ const sendBeacon = (manifest: IManifest) =>
             json: true,
             body: manifest.data
         };
+
+        dbg(`'sendBeacon' is NOT available for sending ${manifest.url}. Will fallback to XHR.`);
 
         request(options, (err: Error, res: any, body: any) => {
             if (err) {

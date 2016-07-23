@@ -22,6 +22,13 @@ schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {foo: 'bar
 schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {foo: 'bar'}});
 schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {foo: 'bar'}});
 ```
+## Debugging
+
+The library uses the []() internally. You can activate the debug messages by executing the following in your console:
+
+```js
+localStorage.debug = '@stylelounge/http-queue:*';
+```
 
 ## Development
 

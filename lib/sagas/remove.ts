@@ -17,8 +17,8 @@
  *
  */
 
+import * as debug from 'debug';
 import {filter} from 'lodash';
-
 import {takeEvery} from 'redux-saga';
 import {Action} from 'redux-actions';
 
@@ -29,12 +29,16 @@ import {
     REMOVE
 } from '../constants/actions';
 
+const dbg = debug('@stylelounge/http-queue:sagas:remove');
+
 function * worker(action: Action<number>): any {
     let items = storage.getData() as Object[];
 
-    items = filter(items, (item: IManifest) => item.id !== action.payload);
+    const {payload: id} = action;
 
-    console.log('left items', items.length, items);
+    items = filter(items, (item: IManifest) => item.id !== id);
+
+    dbg(`Done with item "${id}". ${items.length} item(s) left.`);
 
     storage.setData(items);
 }
