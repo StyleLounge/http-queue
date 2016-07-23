@@ -22,22 +22,21 @@ import {filter} from 'lodash';
 import {takeEvery} from 'redux-saga';
 import {Action} from 'redux-actions';
 
+import storage from '../utils/storage';
 import {IManifest} from '../reducer';
-
-import {LOCALSTORAGE_NAMESPACE} from '../constants/localStorage';
 
 import {
     REMOVE
 } from '../constants/actions';
 
 function * worker(action: Action<number>): any {
-    let items = JSON.parse(window.localStorage.getItem(LOCALSTORAGE_NAMESPACE) || '[]');
+    let items = storage.getData() as Object[];
 
     items = filter(items, (item: IManifest) => item.id !== action.payload);
 
     console.log('left items', items.length, items);
 
-    window.localStorage.setItem(LOCALSTORAGE_NAMESPACE, JSON.stringify(items));
+    storage.setData(items);
 }
 
 function * add(): any {

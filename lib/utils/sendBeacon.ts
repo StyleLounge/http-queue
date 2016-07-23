@@ -26,7 +26,7 @@ const sendBeacon = (manifest: IManifest) =>
 
         const nav: any = navigator as any;
 
-        if (!nav.sendBeacon) {
+        if (nav.sendBeacon) {
             const data = new Blob([JSON.stringify(manifest.data)], {type : 'application/json; charset=UTF-8'});
 
             console.log(data);
@@ -42,8 +42,6 @@ const sendBeacon = (manifest: IManifest) =>
             json: true,
             body: manifest.data
         };
-
-        console.log(options);
 
         request(options, (err: Error, res: any, body: any) => {
             if (err) {

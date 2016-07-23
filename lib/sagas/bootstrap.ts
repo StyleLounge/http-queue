@@ -18,12 +18,12 @@
  */
 
 import {put, PutEffect} from 'redux-saga/effects';
-import {LOCALSTORAGE_NAMESPACE} from '../constants/localStorage';
 
+import storage from '../utils/storage';
 import {restore} from '../actions';
 
 function* bootstrap(): any {
-    const items: Object[] = JSON.parse(window.localStorage.getItem(LOCALSTORAGE_NAMESPACE) || '[]');
+    const items: Object[] = storage.getData() as Object[];
 
     if (items) {
         for (let key in items) {

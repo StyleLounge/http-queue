@@ -51,6 +51,7 @@
     "validate-commit-message": "^3.0.1"
   },
   "dependencies": {
+    "basil.js": "^0.4.4",
     "lodash": "^4.13.1",
     "redux": "^3.5.2",
     "redux-actions": "^0.10.1",

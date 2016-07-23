@@ -21,19 +21,18 @@ import {takeEvery} from 'redux-saga';
 import {Action} from 'redux-actions';
 
 import {IManifest} from '../reducer';
-
-import {LOCALSTORAGE_NAMESPACE} from '../constants/localStorage';
+import storage from '../utils/storage';
 
 import {
     ADD
 } from '../constants/actions';
 
 function * worker(action: Action<IManifest>): any {
-    let items = JSON.parse(window.localStorage.getItem(LOCALSTORAGE_NAMESPACE) || '[]');
+    let items = storage.getData() as Object[] || [];
 
     items = [...items, action.payload];
 
-    window.localStorage.setItem(LOCALSTORAGE_NAMESPACE, JSON.stringify(items));
+    storage.setData(items);
 }
 
 function * add(): any {
