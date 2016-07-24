@@ -1,9 +1,12 @@
 /node_modules
 /typings
 /tmp
+/app.ts
+/index.html
 
 /test.js
 *.js
 *.d.ts
+!/typings.d.ts
 *.spec.d.ts
 npm-debug.log

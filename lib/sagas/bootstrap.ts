@@ -38,6 +38,8 @@ function* bootstrap(): any {
 
             yield put(restore(item));
         }
+    } else {
+        dbg('Found no items to restore. Waiting for new items ...');
     }
 }
 

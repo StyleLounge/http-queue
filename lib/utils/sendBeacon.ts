@@ -17,47 +17,40 @@
  *
  */
 import * as debug from 'debug';
-import * as request from 'request';
+
+import 'isomorphic-fetch';
+import * as http from 'http-client';
 
 import {IManifest} from '../reducer';
 
-const dbg = debug('@stylelounge/http-queue:utils:sendBeacon');
+const dbg: debug.Debugger = debug('@stylelounge/http-queue:utils:sendBeacon');
 
-const sendBeacon = (manifest: IManifest) =>
-    new Promise((resolve, reject) => {
+const sendBeacon = (manifest: IManifest): Promise<any> => {
+    const nav: any = navigator as any;
 
-        const nav: any = navigator as any;
-
-        if (nav.sendBeacon) {
+    if (nav.sendBeacon) {
+        return new Promise((resolve, reject) => {
             dbg(`Okay, cool, 'sendBeacon' is available for sending ${manifest.url}.`);
 
-            const data = new Blob([JSON.stringify(manifest.data)], {type : 'application/json; charset=UTF-8'});
+            const data = new Blob([JSON.stringify(manifest.data || {})], {type : 'application/json; charset=UTF-8'});
 
             nav.sendBeacon(manifest.url, data);
 
             return resolve();
-        }
-
-        const options: request.OptionsWithUrl = {
-            url: manifest.url,
-            method: manifest.verb,
-            json: true,
-            body: manifest.data
-        };
-
-        dbg(`'sendBeacon' is NOT available for sending ${manifest.url}. Will fallback to XHR.`);
-
-        request(options, (err: Error, res: any, body: any) => {
-            if (err) {
-                return reject(new Error(`Unable to send HTTP request: ${manifest.verb} ${manifest.url}: ${err.message} - ${err.message}`));
-            }
-
-            if (res.statusCode < 200 || res.statusCode >= 300) {
-                return reject(new Error(`Got an invalid response. Server sent a HTTP ${res.statusCode}.`));
-            }
-
-            resolve();
         });
-    });
+    }
+
+    const {createFetch, accept, json, method} = http;
+
+    const fetch = createFetch(
+        method(manifest.verb.toUpperCase()),
+        accept('application/json'),
+        json(manifest.data || {})
+    );
+
+    dbg(`'sendBeacon' is NOT available for sending ${manifest.url}. Will fallback to XHR.`);
+
+    return fetch(manifest.url);
+};
 
 export default sendBeacon;

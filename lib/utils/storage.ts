@@ -19,74 +19,67 @@
 
 import * as debug from 'debug';
 
-const Basil = require('basil.js');
+import * as Basil from 'basil.js';
 
-const dbg = debug('@stylelounge/http-queue:storage');
+const dbg: debug.Debugger = debug('@stylelounge/http-queue:storage');
 
 const NAMESPACE = "@stylelounge/http-queue";
-const TTL = (60 * 1000) * 60 * 24 * 2; // 2 days
-
-const storage = new Basil();
-
-export interface IStorage {
-    setData(value: Object): void;
-    getData(): Object;
-}
+const TTL = 10000; /// (60 * 1000) * 60 * 24 * 2; // 2 days
 
 interface IStorageState {
     ttl: number;
     data: any;
 }
 
-function createState(): IStorageState {
-    return {
-        ttl: Date.now() + TTL,
-        data: undefined
-    };
-}
+export class StorageAbstraction {
 
-function setRawData(initialData: Object): void {
-    storage.set(NAMESPACE, initialData);
-}
+    private storage = new Basil();
 
-function getRawData() {
-    return storage.get(NAMESPACE) || {};
-}
+    constructor() {
+        //
+        // Check the TTL value while bootstrapping the store.
+        // If the current stored TTL value is pretty old, discard
+        // the current state and create a new one.
+        //
+        const currentState = this.getRawData();
 
-function getData(): any {
-    const state = getRawData();
+        if (!currentState.ttl || currentState.ttl < Date.now()) {
+            dbg('Okay, state does not exist or seems pretty old. Create new one ...');
 
-    return state ? state.data : undefined;
-}
+            const state = this.createState();
 
-function setData(data: Object): void {
-    const state = getRawData();
+            this.setRawData(state);
+        }
+    }
 
-    state.data = data;
+    private createState(): IStorageState {
+        return {
+            ttl: Date.now() + TTL,
+            data: undefined
+        };
+    }
 
-    setRawData(state);
-}
+    private setRawData(data: Object): void {
+        this.storage.set(NAMESPACE, data);
+    }
 
-//
-// Check the TTL value while bootstrapping the store.
-// If the current stored TTL value is pretty old, discard
-// the current state and create a new one.
-//
-{
-    const currentState = getRawData();
+    private getRawData() {
+        return this.storage.get(NAMESPACE) || {};
+    }
 
-    if (!currentState.ttl || currentState.ttl < Date.now()) {
-        dbg('Okay, state does not exist or seems pretty old. Create new one ...');
+    public getData(): any {
+        const state = this.getRawData();
 
-        const state = createState();
+        return state ? state.data : undefined;
+    }
 
-        setRawData(state);
+    public setData(data: Object): void {
+        const state = this.getRawData();
+
+        state.data = data;
+
+        this.setRawData(state);
     }
 }
 
-const api: IStorage = {
-    setData,
-    getData
-};
-
-export default api;
+export default new StorageAbstraction();

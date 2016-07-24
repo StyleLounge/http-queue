@@ -17,7 +17,7 @@
         "*.ts",
         "*.d.ts",
         "lib/**/*.ts",
-        "typings/index.d.ts"
+        "typings.d.ts"
     ],
     "exclude": [
         "node_modules"
