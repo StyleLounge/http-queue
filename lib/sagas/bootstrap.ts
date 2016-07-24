@@ -17,21 +17,29 @@
  *
  */
 
+import * as debug from 'debug';
 import {put, PutEffect} from 'redux-saga/effects';
-import {LOCALSTORAGE_NAMESPACE} from '../constants/localStorage';
 
+import storage from '../utils/storage';
 import {restore} from '../actions';
 
+const dbg: debug.Debugger = debug('@stylelounge/http-queue:sagas:bootstrap');
+
 function* bootstrap(): any {
-    const items: Object[] = JSON.parse(window.localStorage.getItem(LOCALSTORAGE_NAMESPACE) || '[]');
+    dbg('Check if we can restore an existing queue.');
+
+    const items: Object[] = storage.getData() as Object[];
 
     if (items) {
-        for (let key in items) {
+        dbg(`Found ${items.length} item(s) to restore.`);
+
+        for (const key in items) {
             const item = items[key];
 
-            console.log(restore(item));
             yield put(restore(item));
         }
+    } else {
+        dbg('Found no items to restore. Waiting for new items ...');
     }
 }
 

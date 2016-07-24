@@ -16,16 +16,17 @@
  * SNM Style Net Media GmbH.
  *
  */
-
+import * as debug from 'debug';
 import {take, put, actionChannel, call} from 'redux-saga/effects';
 
 import {IManifest} from '../reducer';
-
 import {ADD,RESTORE} from '../constants/actions';
-
 import {remove} from '../actions';
-
 import sendBeacon from '../utils/sendBeacon';
+
+const NAMESPACE = '@stylelounge/http-queue:sagas:worker';
+
+const dbg: debug.Debugger = debug(NAMESPACE);
 
 function* worker(): any {
     const channel = yield actionChannel([
@@ -39,9 +40,10 @@ function* worker(): any {
 
         try {
             yield call(sendBeacon, manifest);
-            console.log('all good!');
+
+            dbg('Performed HTTP request and everything went fine.');
         } catch (err) {
-            console.warn(err.message);
+            console.warn(`${NAMESPACE}: ${err.message} (tried ${manifest.verb} ${manifest.url}).`);
         }
 
         //
