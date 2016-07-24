@@ -21,6 +21,9 @@
     "ghooks": {
       "pre-commit": "npm run lint && npm test",
       "commit-msg": "npm run validate-commit-message"
+    },
+    "validate-commit-msg": {
+      "warnOnFail": true
     }
   },
   "main": "index.js",
