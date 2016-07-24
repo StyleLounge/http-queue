@@ -15,8 +15,8 @@ build:
       code: npm run lint
 
     - script:
-      name: npm test
-      code: npm test
+      name: npm run test
+      code: npm run test
 
   after-steps:
     - install-packages:
