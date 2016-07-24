@@ -29,7 +29,7 @@ import {
     REMOVE
 } from '../constants/actions';
 
-const dbg = debug('@stylelounge/http-queue:sagas:remove');
+const dbg: debug.Debugger  = debug('@stylelounge/http-queue:sagas:remove');
 
 function * worker(action: Action<number>): any {
     let items = storage.getData() as Object[];

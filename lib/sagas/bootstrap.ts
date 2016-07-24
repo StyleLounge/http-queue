@@ -23,7 +23,7 @@ import {put, PutEffect} from 'redux-saga/effects';
 import storage from '../utils/storage';
 import {restore} from '../actions';
 
-const dbg = debug('@stylelounge/http-queue:sagas:bootstrap');
+const dbg: debug.Debugger = debug('@stylelounge/http-queue:sagas:bootstrap');
 
 function* bootstrap(): any {
     dbg('Check if we can restore an existing queue.');

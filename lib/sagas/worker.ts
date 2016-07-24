@@ -24,7 +24,7 @@ import {ADD,RESTORE} from '../constants/actions';
 import {remove} from '../actions';
 import sendBeacon from '../utils/sendBeacon';
 
-const dbg = debug('@stylelounge/http-queue:sagas:worker');
+const dbg: debug.Debugger  = debug('@stylelounge/http-queue:sagas:worker');
 
 function* worker(): any {
     const channel = yield actionChannel([

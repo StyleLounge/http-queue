@@ -28,7 +28,7 @@ import {
     ADD
 } from '../constants/actions';
 
-const dbg = debug('@stylelounge/http-queue:sagas:add');
+const dbg: debug.Debugger  = debug('@stylelounge/http-queue:sagas:add');
 
 function * worker(action: Action<IManifest>): any {
     let items = storage.getData() as Object[] || [];
