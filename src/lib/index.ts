@@ -38,12 +38,13 @@ export interface IRequest {
 const queue = () => {
     const store = createStore({reducer, middlewares});
 
-    const schedule = (manifest: IRequest) =>
+    const schedule = (manifest: IRequest) => {
         store.dispatch(
             add(assign({}, manifest, {
                 id: uuid(),
             }))
         );
+    };
 
     return schedule;
 };
