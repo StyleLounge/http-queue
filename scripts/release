@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 npm run build
-standard-version
+standard-version --no-verify
 
 git push --follow-tags origin master; npm publish

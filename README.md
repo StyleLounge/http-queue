@@ -1,4 +1,4 @@
-# @style/http-queue
+# @style/http-queue [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
 
 A fire-and-forget HTTP request queue implementation for browsers.
 
@@ -15,11 +15,6 @@ import queue from '@style/http-queue';
 
 const schedule = queue();
 
-schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {foo: 'bar'}});
-schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {foo: 'bar'}});
-schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {foo: 'bar'}});
-schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {foo: 'bar'}});
-schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {foo: 'bar'}});
 schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {foo: 'bar'}});
 ```
 ## Debugging
