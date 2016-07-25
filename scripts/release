@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 npm run build
-standard-version
+standard-version --no-verify
 
-git push --follow-tags origin master; npm publish
+# Push changes into the current branch
+git rev-parse --abbrev-ref HEAD | xargs git push origin
+
+git push --tags
+
+npm publish

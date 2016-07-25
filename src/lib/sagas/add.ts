@@ -17,6 +17,31 @@
  *
  */
 
-export const ADD = '@@stylelounge/http-queue/add';
-export const REMOVE = '@@stylelounge/http-queue/remove';
-export const RESTORE = '@@stylelounge/http-queue/restore';
+import * as debug from "debug";
+import {takeEvery} from "redux-saga";
+import {Action} from "redux-actions";
+
+import {IManifest} from "../reducer";
+import storage from "../utils/storage";
+
+import {
+    ADD,
+} from "../constants/actions";
+
+const dbg: debug.Debugger  = debug("@stylelounge/http-queue:sagas:add");
+
+function * worker(action: Action<IManifest>): any {
+    let items = storage.getData() as Object[] || [];
+
+    items = [...items, action.payload];
+
+    dbg(`Queued item. ${items.length} item(s) in the queue.`);
+
+    storage.setData(items);
+}
+
+function * add(): any {
+    yield * takeEvery(ADD, worker);
+}
+
+export default add;

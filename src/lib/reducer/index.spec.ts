@@ -26,20 +26,20 @@ import reducer, {IManifest, IState} from "./";
 describe("The reducer", function() {
     it("should be able to handle 'ADD'", function(done) {
         const manifest: IManifest = {
+            data: {foo: "bar"},
             id: 1,
-            verb: "GET",
             url: "http://stylelounge.de",
-            data: {foo: "bar"}
+            verb: "GET",
         };
 
         const before: IState = {
-            manifests: []
+            manifests: [],
         };
 
         const after: IState = {
             manifests: [
-                manifest
-            ]
+                manifest,
+            ],
         };
 
         const action = add(manifest);
@@ -53,18 +53,18 @@ describe("The reducer", function() {
 
     it("should be able to handle 'REMOVE'", function(done) {
         const manifest: IManifest = {
+            data: {foo: "bar"},
             id: 1,
-            verb: "GET",
             url: "http://stylelounge.de",
-            data: {foo: "bar"}
+            verb: "GET",
         };
 
         const before: IState = {
-            manifests: [manifest]
+            manifests: [manifest],
         };
 
         const after: IState = {
-            manifests: []
+            manifests: [],
         };
 
         const action = remove(1);
@@ -78,20 +78,20 @@ describe("The reducer", function() {
 
     it("should be able to handle 'RESTORE'", function(done) {
         const manifest: IManifest = {
+            data: {foo: "bar"},
             id: 1,
-            verb: "GET",
             url: "http://stylelounge.de",
-            data: {foo: "bar"}
+            verb: "GET",
         };
 
         const before: IState = {
-            manifests: []
+            manifests: [],
         };
 
         const after: IState = {
             manifests: [
-                manifest
-            ]
+                manifest,
+            ],
         };
 
         const action = restore(manifest);

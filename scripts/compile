@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#
+# Script for compiling the sources
+#
+
+rm -rf ./dist
+tsc

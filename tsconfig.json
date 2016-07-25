@@ -8,17 +8,13 @@
         "noImplicitAny": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
-        "sourceMap": false,
+        "sourceMap": true,
         "pretty": true,
-
-        "noImplicitUseStrict": true
+        "noImplicitUseStrict": true,
+        "rootDir": "./src",
+        "sourceRoot": "./src",
+        "outDir": "./dist"
     },
-    "filesGlob": [
-        "*.ts",
-        "*.d.ts",
-        "lib/**/*.ts",
-        "typings.d.ts"
-    ],
     "exclude": [
         "node_modules"
     ]

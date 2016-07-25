@@ -4,4 +4,7 @@
 # Script for executing the test suite
 #
 
-mocha --require ts-node/register "./lib/**/*.spec.ts"
+npm run typings
+npm run compile
+
+mocha -- $(find dist -name '*.spec.js')

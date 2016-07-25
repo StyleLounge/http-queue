@@ -17,21 +17,21 @@
  *
  */
 
-import {createStore, combineReducers, applyMiddleware, compose, ReducersMapObject, Store, Action} from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import {createStore, applyMiddleware, compose, Store} from "redux";
+import createSagaMiddleware from "redux-saga";
 
 export interface IMiddlewares {
-    sagas: Function[],
-    enhancers?: Object
+    sagas: Function[];
+    enhancers?: Object;
 }
 
 export interface IOptions {
-    middlewares: IMiddlewares,
-    reducer: any,
-    initialState?: Object
+    middlewares: IMiddlewares;
+    reducer: any;
+    initialState?: Object;
 }
 
-function configureStore (options: IOptions) {
+function configureStore (options: IOptions): Store<any> {
     const sagaMiddleware = createSagaMiddleware();
     const {reducer, initialState} = options;
 
