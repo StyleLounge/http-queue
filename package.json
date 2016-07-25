@@ -48,7 +48,7 @@
     "ghooks": "^1.3.2",
     "mocha": "^2.5.3",
     "scripty": "^1.6.0",
-    "standard-version": "github:akoenig/bumper",
+    "standard-version": "^2.4.0",
     "tslint": "^3.13.0",
     "typescript": "^1.8.10",
     "typings": "^1.3.1",
