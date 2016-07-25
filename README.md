@@ -1,4 +1,4 @@
-# @style/http-queue [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
+# @style/http-queue [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version) [![wercker status](https://app.wercker.com/status/fdcda89323df1030a7581504bef3c4ad/s "wercker status")](https://app.wercker.com/project/bykey/fdcda89323df1030a7581504bef3c4ad)
 
 A fire-and-forget HTTP request queue implementation for browsers.
 
