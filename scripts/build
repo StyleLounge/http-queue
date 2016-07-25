@@ -4,9 +4,8 @@
 # Script for performing a build
 #
 
-rm -rf ./node_modules ./typings
+rm -rf ./node_modules ./typings ./dist
 
-# clean all built JS files
-ls {.,lib/**}/*.js | xargs rm
-
-npm i && npm run typings && tsc
+npm i
+npm run typings
+npm run compile

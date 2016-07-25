@@ -1,2 +1,14 @@
-*.ts
-!*.d.ts
+/src
+/typings
+/scripts
+/*.js
+/wercker.yml
+/typings.json
+/tslint.json
+/tsconfig.json
+/.npmignore
+/.editorconfig
+
+# Just for development
+/typings.d.ts
+*.spec.*

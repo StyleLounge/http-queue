@@ -17,16 +17,16 @@
  *
  */
 
-import * as debug from 'debug';
-import {put, PutEffect} from 'redux-saga/effects';
+import * as debug from "debug";
+import {put} from "redux-saga/effects";
 
-import storage from '../utils/storage';
-import {restore} from '../actions';
+import storage from "../utils/storage";
+import {restore} from "../actions";
 
-const dbg: debug.Debugger = debug('@stylelounge/http-queue:sagas:bootstrap');
+const dbg: debug.Debugger = debug("@stylelounge/http-queue:sagas:bootstrap");
 
 function* bootstrap(): any {
-    dbg('Check if we can restore an existing queue.');
+    dbg("Check if we can restore an existing queue.");
 
     const items: Object[] = storage.getData() as Object[];
 
@@ -34,12 +34,14 @@ function* bootstrap(): any {
         dbg(`Found ${items.length} item(s) to restore.`);
 
         for (const key in items) {
-            const item = items[key];
+            if (items.hasOwnProperty(key)) {
+                const item = items[key];
 
-            yield put(restore(item));
+                yield put(restore(item));
+            }
         }
     } else {
-        dbg('Found no items to restore. Waiting for new items ...');
+        dbg("Found no items to restore. Waiting for new items ...");
     }
 }
 

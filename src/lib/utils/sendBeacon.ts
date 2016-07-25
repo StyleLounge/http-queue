@@ -16,23 +16,23 @@
  * SNM Style Net Media GmbH.
  *
  */
-import * as debug from 'debug';
+import * as debug from "debug";
 
-import 'isomorphic-fetch';
-import * as http from 'http-client';
+import "isomorphic-fetch";
+import * as http from "http-client";
 
-import {IManifest} from '../reducer';
+import {IManifest} from "../reducer";
 
-const dbg: debug.Debugger = debug('@stylelounge/http-queue:utils:sendBeacon');
+const dbg: debug.Debugger = debug("@stylelounge/http-queue:utils:sendBeacon");
 
 const sendBeacon = (manifest: IManifest): Promise<any> => {
     const nav: any = navigator as any;
 
     if (nav.sendBeacon) {
         return new Promise((resolve, reject) => {
-            dbg(`Okay, cool, 'sendBeacon' is available for sending ${manifest.url}.`);
+            dbg(`Okay, cool, "sendBeacon" is available for sending ${manifest.url}.`);
 
-            const data = new Blob([JSON.stringify(manifest.data || {})], {type : 'application/json; charset=UTF-8'});
+            const data = new Blob([JSON.stringify(manifest.data || {})], {type : "application/json; charset=UTF-8"});
 
             nav.sendBeacon(manifest.url, data);
 
@@ -44,11 +44,11 @@ const sendBeacon = (manifest: IManifest): Promise<any> => {
 
     const fetch = createFetch(
         method(manifest.verb.toUpperCase()),
-        accept('application/json'),
+        accept("application/json"),
         json(manifest.data || {})
     );
 
-    dbg(`'sendBeacon' is NOT available for sending ${manifest.url}. Will fallback to XHR.`);
+    dbg(`"sendBeacon" is NOT available for sending ${manifest.url}. Will fallback to XHR.`);
 
     return fetch(manifest.url);
 };

@@ -17,12 +17,9 @@
  *
  */
 
-function uuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (chr: string) => {
-        const r = Math.random() * 16|0, v = chr == 'x' ? r : (r&0x3|0x8);
+import bootstrap from "./bootstrap";
+import add from "./add";
+import remove from "./remove";
+import worker from "./worker";
 
-        return v.toString(16);
-    });
-}
-
-export default uuid;
+export default [worker, bootstrap, add, remove];

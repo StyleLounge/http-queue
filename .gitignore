@@ -3,6 +3,7 @@
 /tmp
 /app.ts
 /index.html
+/dist
 
 /test.js
 *.js

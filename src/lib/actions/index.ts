@@ -17,6 +17,12 @@
  *
  */
 
-import queue from './lib';
+import add from "./add";
+import remove from "./remove";
+import restore from "./restore";
 
-export default queue;
+export {
+    add,
+    remove,
+    restore
+}

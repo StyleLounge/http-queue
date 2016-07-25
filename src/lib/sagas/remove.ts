@@ -17,19 +17,19 @@
  *
  */
 
-import * as debug from 'debug';
-import {filter} from 'lodash';
-import {takeEvery} from 'redux-saga';
-import {Action} from 'redux-actions';
+import * as debug from "debug";
+import {filter} from "lodash";
+import {takeEvery} from "redux-saga";
+import {Action} from "redux-actions";
 
-import storage from '../utils/storage';
-import {IManifest} from '../reducer';
+import storage from "../utils/storage";
+import {IManifest} from "../reducer";
 
 import {
-    REMOVE
-} from '../constants/actions';
+    REMOVE,
+} from "../constants/actions";
 
-const dbg: debug.Debugger  = debug('@stylelounge/http-queue:sagas:remove');
+const dbg: debug.Debugger  = debug("@stylelounge/http-queue:sagas:remove");
 
 function * worker(action: Action<number>): any {
     let items = storage.getData() as Object[];

@@ -17,11 +17,11 @@
  *
  */
 
-import * as debug from 'debug';
+import * as debug from "debug";
 
-import * as Basil from 'basil.js';
+import * as Basil from "basil.js";
 
-const dbg: debug.Debugger = debug('@stylelounge/http-queue:storage');
+const dbg: debug.Debugger = debug("@stylelounge/http-queue:storage");
 
 const NAMESPACE = "@stylelounge/http-queue";
 const TTL = 10000; /// (60 * 1000) * 60 * 24 * 2; // 2 days
@@ -44,27 +44,12 @@ export class StorageAbstraction {
         const currentState = this.getRawData();
 
         if (!currentState.ttl || currentState.ttl < Date.now()) {
-            dbg('Okay, state does not exist or seems pretty old. Create new one ...');
+            dbg("Okay, state does not exist or seems pretty old. Create new one ...");
 
             const state = this.createState();
 
             this.setRawData(state);
         }
-    }
-
-    private createState(): IStorageState {
-        return {
-            ttl: Date.now() + TTL,
-            data: undefined
-        };
-    }
-
-    private setRawData(data: Object): void {
-        this.storage.set(NAMESPACE, data);
-    }
-
-    private getRawData() {
-        return this.storage.get(NAMESPACE) || {};
     }
 
     public getData(): any {
@@ -79,6 +64,21 @@ export class StorageAbstraction {
         state.data = data;
 
         this.setRawData(state);
+    }
+
+    private createState(): IStorageState {
+        return {
+            data: undefined,
+            ttl: Date.now() + TTL,
+        };
+    }
+
+    private setRawData(data: Object): void {
+        this.storage.set(NAMESPACE, data);
+    }
+
+    private getRawData() {
+        return this.storage.get(NAMESPACE) || {};
     }
 }
 

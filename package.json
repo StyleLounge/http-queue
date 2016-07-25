@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "build": "./scripts/build",
+    "compile": "scripty",
     "lint": "scripty",
     "test": "scripty",
     "typings": "scripty",
@@ -26,7 +27,8 @@
       "warnOnFail": true
     }
   },
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StyleLounge/http-queue.git"
@@ -47,7 +49,6 @@
     "mocha": "^2.5.3",
     "scripty": "^1.6.0",
     "standard-version": "github:akoenig/bumper",
-    "ts-node": "^0.9.3",
     "tslint": "^3.13.0",
     "typescript": "^1.8.10",
     "typings": "^1.3.1",
