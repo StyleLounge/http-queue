@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/StyleLounge/http-queue/compare/v1.0.0...v1.0.1) (2016-07-25)
+
+
+### Bug Fixes
+
+* add full function body in order to prevent exposing internal interface ([d0138d4](https://github.com/StyleLounge/http-queue/commit/d0138d4))
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2016-07-25)
 
