@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 npm run build
+npm lint test
+npm run lint
+
 standard-version --no-verify
 
 # Push changes into the current branch
