@@ -4,7 +4,7 @@
 /app.ts
 /index.html
 /dist
-
+/.idea
 /test.js
 *.js
 *.d.ts

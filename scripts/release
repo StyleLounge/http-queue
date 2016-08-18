@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 npm run build
+npm lint test
+npm run lint
+
 standard-version --no-verify
 
 # Push changes into the current branch
@@ -8,4 +11,4 @@ git rev-parse --abbrev-ref HEAD | xargs git push origin
 
 git push --tags
 
-npm publish
+npm publish --access=public
