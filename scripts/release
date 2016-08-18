@@ -11,4 +11,4 @@ git rev-parse --abbrev-ref HEAD | xargs git push origin
 
 git push --tags
 
-npm publish
+npm publish --access=public
