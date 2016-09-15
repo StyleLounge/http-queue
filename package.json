@@ -1,6 +1,6 @@
 {
   "name": "@style/http-queue",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A fire-and-forget HTTP request queue implementation for browsers.",
   "author": "SNM Style Net Media GmbH",
   "contributors": [
