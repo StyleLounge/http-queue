@@ -14,32 +14,46 @@ import {IManifest} from "../reducer";
 
 const dbg: debug.Debugger = debug("@stylelounge/http-queue:utils:sendBeacon");
 
-const sendBeacon = (manifest: IManifest): Promise<any> => {
+const sendHttp = (manifest: IManifest): Promise<any> =>
+    new Promise((resolve, reject) => {
+        const {createFetch, accept, json, method} = http;
+
+        const fetch = createFetch(
+            method(manifest.verb.toUpperCase()),
+            accept("application/json"),
+            json(manifest.data || {})
+        );
+
+        dbg(`Sending data via "XHR".`);
+
+        fetch(manifest.url);
+
+        resolve();
+    });
+
+const sendBeacon = (manifest: IManifest) => {
     const nav: any = navigator as any;
 
     if (nav.sendBeacon) {
-        return new Promise((resolve, reject) => {
-            dbg(`Okay, cool, "sendBeacon" is available for sending ${manifest.url}.`);
+        const blob = new Blob([JSON.stringify(manifest.data || {})], {type: "application/json; charset=UTF-8"});
 
-            const data = new Blob([JSON.stringify(manifest.data || {})], {type : "application/json; charset=UTF-8"});
+        dbg(`Sending data via "sendBeacon" (size: ${blob.size}).`);
 
-            nav.sendBeacon(manifest.url, data);
-
-            return resolve();
-        });
+        return nav.sendBeacon(manifest.url, blob);
     }
 
-    const {createFetch, accept, json, method} = http;
-
-    const fetch = createFetch(
-        method(manifest.verb.toUpperCase()),
-        accept("application/json"),
-        json(manifest.data || {})
-    );
-
-    dbg(`"sendBeacon" is NOT available for sending ${manifest.url}. Will fallback to XHR.`);
-
-    return fetch(manifest.url);
+    return false;
 };
 
-export default sendBeacon;
+const send = (manifest: IManifest): Promise<any> =>
+    new Promise((resolve, reject) => {
+        if (!sendBeacon(manifest)) {
+            dbg(`Okay, seems like "sendBeacon" failed. Will retry with "XHR".`);
+
+            sendHttp(manifest);
+        }
+
+        return resolve();
+    });
+
+export default send;

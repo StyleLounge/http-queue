@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+#
+# Install the typings, compile the application and switch into "watch mode".
+#
+
+rm -rf ./typings ./node_modules ./dist && npm i && typings install && tsc --watch
