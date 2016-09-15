@@ -1,6 +1,6 @@
 {
   "name": "@style/http-queue",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A fire-and-forget HTTP request queue implementation for browsers.",
   "author": "SNM Style Net Media GmbH",
   "contributors": [
@@ -15,6 +15,7 @@
     "lint": "./scripts/lint",
     "test": "./scripts/test",
     "typings": "./scripts/typings",
+    "watch": "./scripts/watch",
     "validate-commit-message": "./scripts/validate-commit-message",
     "release": "./scripts/release"
   },
@@ -61,6 +62,6 @@
     "lodash": "^4.13.1",
     "redux": "^3.5.2",
     "redux-actions": "^0.10.1",
-    "redux-saga": "^0.11.0"
+    "redux-saga": "0.11.0"
   }
 }
