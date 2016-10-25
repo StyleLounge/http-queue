@@ -25,6 +25,7 @@ const sendHttp = (manifest: IManifest): Promise<any> =>
         );
 
         dbg(`Sending data via "XHR".`);
+        dbg(manifest.data);
 
         fetch(manifest.url);
 
@@ -38,6 +39,7 @@ const sendBeacon = (manifest: IManifest) => {
         const blob = new Blob([JSON.stringify(manifest.data || {})], {type: "application/json; charset=UTF-8"});
 
         dbg(`Sending data via "sendBeacon" (size: ${blob.size}).`);
+        dbg(manifest.data);
 
         return nav.sendBeacon(manifest.url, blob);
     }
