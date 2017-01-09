@@ -6,10 +6,11 @@
  * MIT Licensed
  */
 
-import {createAction} from "redux-actions";
+import { createAction } from "redux-actions";
 
-import {ADD} from "../constants/actions";
+import { IManifest } from "../types";
+import { ADD } from "../constants/actions";
 
-const add = createAction(ADD);
+const add = createAction<IManifest>(ADD);
 
 export default add;

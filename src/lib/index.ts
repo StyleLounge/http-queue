@@ -16,7 +16,7 @@ import reducer from "./reducer";
 
 import {add} from "./actions";
 
-const middlewares = {sagas};
+const middlewares = { sagas };
 
 export interface IRequest {
     verb: string;
@@ -25,7 +25,7 @@ export interface IRequest {
 }
 
 const queue = () => {
-    const store = createStore({reducer, middlewares});
+    const store = createStore({ reducer, middlewares });
 
     const schedule = (manifest: IRequest) => {
         store.dispatch(

@@ -7,12 +7,13 @@
  */
 import * as debug from "debug";
 
+const http = require("http-client");
+
 import "isomorphic-fetch";
-import * as http from "http-client";
 
-import {IManifest} from "../reducer";
+import { IManifest } from "../types";
 
-const dbg: debug.Debugger = debug("@stylelounge/http-queue:utils:sendBeacon");
+const dbg: debug.IDebugger = debug("@stylelounge/http-queue:utils:sendBeacon");
 
 const sendHttp = (manifest: IManifest): Promise<any> =>
     new Promise((resolve, reject) => {
@@ -35,7 +36,7 @@ const sendBeacon = (manifest: IManifest) => {
     const nav: any = navigator as any;
 
     if (nav.sendBeacon) {
-        const blob = new Blob([JSON.stringify(manifest.data || {})], {type: "application/json; charset=UTF-8"});
+        const blob = new Blob([JSON.stringify(manifest.data || {})], { type: "application/json; charset=UTF-8" });
 
         dbg(`Sending data via "sendBeacon" (size: ${blob.size}).`);
 

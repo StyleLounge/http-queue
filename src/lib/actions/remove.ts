@@ -6,10 +6,10 @@
  * MIT Licensed
  */
 
-import {createAction} from "redux-actions";
+import { createAction } from "redux-actions";
 
-import {REMOVE} from "../constants/actions";
+import { REMOVE } from "../constants/actions";
 
-const remove = createAction(REMOVE);
+const remove = createAction<number>(REMOVE);
 
 export default remove;

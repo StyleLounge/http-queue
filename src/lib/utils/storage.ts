@@ -8,9 +8,9 @@
 
 import * as debug from "debug";
 
-import * as Basil from "basil.js";
+const Basil = require("basil.js");
 
-const dbg: debug.Debugger = debug("@stylelounge/http-queue:storage");
+const dbg: debug.IDebugger = debug("@stylelounge/http-queue:storage");
 
 const NAMESPACE = "@stylelounge/http-queue";
 const TTL = 10000; /// (60 * 1000) * 60 * 24 * 2; // 2 days

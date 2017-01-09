@@ -1,29 +1,18 @@
 {
-    "compileOnSave": false,
     "compilerOptions": {
-        "declaration": true,
-        "forceConsistentCasingInFileNames": true,
         "module": "commonjs",
         "target": "es6",
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
         "sourceMap": true,
-        "pretty": true,
-        "noImplicitUseStrict": true,
+        "declaration": true,
         "rootDir": "./src",
         "sourceRoot": "./src",
-        "outDir": "./dist"
+        "outDir": "./dist",
+        "forceConsistentCasingInFileNames": true,
+        "pretty": true,
+        "noImplicitAny": true
     },
-    "filesGlob": [
-        "**/*.ts",
-        "**/*.d.ts",
-        "!node_modules/**"
-    ],
     "exclude": [
-        "dist",
         "node_modules",
-        ".idea",
-        ".wercker"
+        "dist"
     ]
 }

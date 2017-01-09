@@ -7,20 +7,20 @@
  */
 
 import * as debug from "debug";
-import {filter} from "lodash";
-import {takeEvery} from "redux-saga";
-import {Action} from "redux-actions";
+import { filter } from "lodash";
+import { takeEvery } from "redux-saga";
+import { Action } from "redux-actions";
 
 import storage from "../utils/storage";
-import {IManifest} from "../reducer";
+import { IManifest } from "../types";
 
 import {
     REMOVE,
 } from "../constants/actions";
 
-const dbg: debug.Debugger  = debug("@stylelounge/http-queue:sagas:remove");
+const dbg: debug.IDebugger = debug("@stylelounge/http-queue:sagas:remove");
 
-function * worker(action: Action<number>): any {
+function* worker(action: Action<number>): any {
     let items = storage.getData() as Object[];
 
     const {payload: id} = action;
@@ -32,8 +32,8 @@ function * worker(action: Action<number>): any {
     storage.setData(items);
 }
 
-function * add(): any {
-    yield * takeEvery(REMOVE, worker);
+function* add(): any {
+    yield* takeEvery(REMOVE, worker);
 }
 
 export default add;

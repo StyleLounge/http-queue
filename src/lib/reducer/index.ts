@@ -6,8 +6,8 @@
  * MIT Licensed
  */
 
-import {assign, filter} from "lodash";
-import {handleActions, Action, ReducerMap} from "redux-actions";
+import { assign, filter } from "lodash";
+import { handleActions, Action, ReducerMap } from "redux-actions";
 
 import {
     ADD,
@@ -15,12 +15,7 @@ import {
     REMOVE,
 } from "../constants/actions";
 
-export interface IManifest {
-    id: number;
-    verb: string;
-    url: string;
-    data?: Object;
-}
+import { IManifest } from "../types";
 
 export interface IState {
     manifests: IManifest[];
@@ -49,4 +44,4 @@ const handlers: ReducerMap<IState, IManifest | number> = {
         }) as IState,
 };
 
-export default handleActions<IState, IManifest>(handlers, createState());
+export default handleActions<IState, IManifest | number>(handlers, createState());
