@@ -6,8 +6,10 @@
  * MIT Licensed
  */
 
-import {createStore, applyMiddleware, compose, Store} from "redux";
+import { createStore, applyMiddleware, compose, Store } from "redux";
 import createSagaMiddleware from "redux-saga";
+
+import { IState } from "../types";
 
 export interface IMiddlewares {
     sagas: Function[];
@@ -17,14 +19,14 @@ export interface IMiddlewares {
 export interface IOptions {
     middlewares: IMiddlewares;
     reducer: any;
-    initialState?: Object;
+    initialState?: IState;
 }
 
-function configureStore (options: IOptions): Store<any> {
+function configureStore(options: IOptions): Store<IState> {
     const sagaMiddleware = createSagaMiddleware();
     const {reducer, initialState} = options;
 
-    const store = createStore(
+    const store = createStore<IState>(
         reducer,
         initialState,
         compose(
