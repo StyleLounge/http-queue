@@ -6,17 +6,15 @@
  * MIT Licensed
  */
 
-import {assign} from "lodash";
-
 import uuid from "./utils/uuid";
 
 import createStore from "./store";
 import sagas from "./sagas";
 import reducer from "./reducer";
 
-import {add} from "./actions";
+import { add } from "./actions";
 
-const middlewares = {sagas};
+const middlewares = { sagas };
 
 export interface IRequest {
     verb: string;
@@ -25,13 +23,14 @@ export interface IRequest {
 }
 
 const queue = () => {
-    const store = createStore({reducer, middlewares});
+    const store = createStore({ reducer, middlewares });
 
     const schedule = (manifest: IRequest) => {
         store.dispatch(
-            add(assign({}, manifest, {
+            add({
                 id: uuid(),
-            }))
+                ...manifest,
+            })
         );
     };
 

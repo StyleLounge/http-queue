@@ -7,35 +7,33 @@
  */
 import * as debug from "debug";
 
+const http = require("http-client");
+
 import "isomorphic-fetch";
-import * as http from "http-client";
 
-import {IManifest} from "../reducer";
+import { IManifest } from "../types";
 
-const dbg: debug.Debugger = debug("@stylelounge/http-queue:utils:sendBeacon");
+const dbg: debug.IDebugger = debug("@stylelounge/http-queue:utils:sendBeacon");
 
-const sendHttp = (manifest: IManifest): Promise<any> =>
-    new Promise((resolve, reject) => {
-        const {createFetch, accept, json, method} = http;
+const sendHttp = async (manifest: IManifest) => {
+    const {createFetch, accept, json, method} = http;
 
-        const fetch = createFetch(
-            method(manifest.verb.toUpperCase()),
-            accept("application/json"),
-            json(manifest.data || {})
-        );
+    const post = createFetch(
+        method(manifest.verb.toUpperCase()),
+        accept("application/json"),
+        json(manifest.data || {})
+    );
 
-        dbg(`Sending data via "XHR".`);
+    dbg(`Sending data via "XHR".`);
 
-        fetch(manifest.url);
+    await post(manifest.url);
+};
 
-        resolve();
-    });
-
-const sendBeacon = (manifest: IManifest) => {
+const sendBeacon = async (manifest: IManifest): Promise<boolean> => {
     const nav: any = navigator as any;
 
     if (nav.sendBeacon) {
-        const blob = new Blob([JSON.stringify(manifest.data || {})], {type: "application/json; charset=UTF-8"});
+        const blob = new Blob([JSON.stringify(manifest.data || {})], { type: "application/json; charset=UTF-8" });
 
         dbg(`Sending data via "sendBeacon" (size: ${blob.size}).`);
 
@@ -45,15 +43,12 @@ const sendBeacon = (manifest: IManifest) => {
     return false;
 };
 
-const send = (manifest: IManifest): Promise<any> =>
-    new Promise((resolve, reject) => {
-        if (!sendBeacon(manifest)) {
-            dbg(`Okay, seems like "sendBeacon" failed. Will retry with "XHR".`);
+const send = async (manifest: IManifest) => {
+    if (!(await sendBeacon(manifest))) {
+        dbg(`Okay, seems like "sendBeacon" failed. Will retry with "XHR".`);
 
-            sendHttp(manifest);
-        }
-
-        return resolve();
-    });
+        await sendHttp(manifest);
+    }
+};
 
 export default send;

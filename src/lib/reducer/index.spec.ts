@@ -6,16 +6,18 @@
  * MIT Licensed
  */
 
-import {expect} from "chai";
+import { expect } from "chai";
 
-import {add, remove, restore} from "../actions";
+import { add, remove, restore } from "../actions";
 
-import reducer, {IManifest, IState} from "./";
+import { IManifest } from "../types";
 
-describe("The reducer", function() {
-    it("should be able to handle 'ADD'", function(done) {
+import reducer, { IState } from "./";
+
+describe("The reducer", function () {
+    it("should be able to handle 'ADD'", function (done) {
         const manifest: IManifest = {
-            data: {foo: "bar"},
+            data: { foo: "bar" },
             id: 1,
             url: "http://stylelounge.de",
             verb: "GET",
@@ -40,9 +42,9 @@ describe("The reducer", function() {
         done();
     });
 
-    it("should be able to handle 'REMOVE'", function(done) {
+    it("should be able to handle 'REMOVE'", function (done) {
         const manifest: IManifest = {
-            data: {foo: "bar"},
+            data: { foo: "bar" },
             id: 1,
             url: "http://stylelounge.de",
             verb: "GET",
@@ -65,9 +67,9 @@ describe("The reducer", function() {
         done();
     });
 
-    it("should be able to handle 'RESTORE'", function(done) {
+    it("should be able to handle 'RESTORE'", function (done) {
         const manifest: IManifest = {
-            data: {foo: "bar"},
+            data: { foo: "bar" },
             id: 1,
             url: "http://stylelounge.de",
             verb: "GET",

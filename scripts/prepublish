@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-#
-# Script for executing the npm `prepublish` hook
-#
-
-npm run typings

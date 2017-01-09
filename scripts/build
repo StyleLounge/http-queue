@@ -4,8 +4,7 @@
 # Script for performing a build
 #
 
-rm -rf ./node_modules ./typings ./dist
+rm -rf ./node_modules ./dist
 
 npm i
-npm run typings
 npm run compile

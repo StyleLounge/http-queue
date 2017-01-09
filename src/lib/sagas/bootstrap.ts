@@ -7,12 +7,12 @@
  */
 
 import * as debug from "debug";
-import {put} from "redux-saga/effects";
+import { put } from "redux-saga/effects";
 
 import storage from "../utils/storage";
-import {restore} from "../actions";
+import { restore } from "../actions";
 
-const dbg: debug.Debugger = debug("@stylelounge/http-queue:sagas:bootstrap");
+const dbg: debug.IDebugger = debug("@stylelounge/http-queue:sagas:bootstrap");
 
 function* bootstrap(): any {
     dbg("Check if we can restore an existing queue.");

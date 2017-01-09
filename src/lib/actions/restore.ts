@@ -6,10 +6,11 @@
  * MIT Licensed
  */
 
-import {createAction} from "redux-actions";
+import { createAction } from "redux-actions";
 
-import {RESTORE} from "../constants/actions";
+import { IManifest } from "../types";
+import { RESTORE } from "../constants/actions";
 
-const restore = createAction(RESTORE);
+const restore = createAction<IManifest>(RESTORE);
 
 export default restore;

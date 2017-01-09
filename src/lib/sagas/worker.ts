@@ -6,19 +6,20 @@
  * MIT Licensed
  */
 import * as debug from "debug";
-import {take, put, actionChannel, call} from "redux-saga/effects";
+import { take, put, actionChannel, call } from "redux-saga/effects";
 
-import {IManifest} from "../reducer";
+import { IManifest } from "../types";
+
 import {
     ADD,
     RESTORE,
 } from "../constants/actions";
-import {remove} from "../actions";
+import { remove } from "../actions";
 import sendBeacon from "../utils/sendBeacon";
 
 const NAMESPACE = "@stylelounge/http-queue:sagas:worker";
 
-const dbg: debug.Debugger = debug(NAMESPACE);
+const dbg: debug.IDebugger = debug(NAMESPACE);
 
 function* worker(): any {
     const channel = yield actionChannel([

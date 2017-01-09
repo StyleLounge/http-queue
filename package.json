@@ -1,67 +1,62 @@
 {
-  "name": "@style/http-queue",
-  "version": "1.2.0",
-  "description": "A fire-and-forget HTTP request queue implementation for browsers.",
-  "author": "SNM Style Net Media GmbH",
-  "contributors": [
-    {
-      "name": "André König",
-      "email": "andre.koenig@stylelounge.de"
-    }
-  ],
-  "scripts": {
-    "build": "./scripts/build",
-    "compile": "./scripts/compile",
-    "lint": "./scripts/lint",
-    "test": "./scripts/test",
-    "typings": "./scripts/typings",
-    "watch": "./scripts/watch",
-    "validate-commit-message": "./scripts/validate-commit-message",
-    "release": "./scripts/release"
-  },
-  "config": {
-    "ghooks": {
-      "pre-commit": "npm run lint && npm test",
-      "commit-msg": "npm run validate-commit-message"
+    "name": "@style/http-queue",
+    "version": "1.3.0",
+    "description": "A fire-and-forget HTTP request queue implementation for browsers.",
+    "author": "SNM Style Net Media GmbH",
+    "contributors": [
+        {
+            "name": "André König",
+            "email": "andre.koenig@stylelounge.com"
+        }
+    ],
+    "scripts": {
+        "build": "./scripts/build",
+        "compile": "./scripts/compile",
+        "lint": "./scripts/lint",
+        "test": "./scripts/test",
+        "watch": "./scripts/watch",
+        "precommit": "./scripts/precommit",
+        "commitmsg": "./scripts/commitmsg",
+        "validate-commit-message": "./scripts/validate-commit-message",
+        "release": "./scripts/release"
     },
-    "validate-commit-msg": {
-      "warnOnFail": true
+    "main": "./dist/index.js",
+    "typings": "./dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/StyleLounge/http-queue.git"
+    },
+    "keywords": [
+        "http",
+        "queue",
+        "browsers"
+    ],
+    "license": "SEE LICENSE IN license.md",
+    "bugs": {
+        "url": "https://github.com/StyleLounge/http-queue/issues"
+    },
+    "homepage": "https://github.com/StyleLounge/http-queue#readme",
+    "devDependencies": {
+        "@types/chai": "^3.4.34",
+        "@types/debug": "^0.0.29",
+        "@types/mocha": "^2.2.36",
+        "@types/node": "^6.0.58",
+        "@types/redux-actions": "^1.2.2",
+        "chai": "^3.5.0",
+        "husky": "^0.12.0",
+        "mocha": "^2.5.3",
+        "standard-version": "^2.4.0",
+        "tslint": "^3.13.0",
+        "typescript": "^2.1.4",
+        "validate-commit-message": "^3.0.1"
+    },
+    "dependencies": {
+        "basil.js": "^0.4.4",
+        "debug": "^2.2.0",
+        "http-client": "^4.1.0",
+        "isomorphic-fetch": "^2.2.1",
+        "redux": "^3.5.2",
+        "redux-actions": "^0.10.1",
+        "redux-saga": "0.11.0"
     }
-  },
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/StyleLounge/http-queue.git"
-  },
-  "keywords": [
-    "http",
-    "queue",
-    "browsers"
-  ],
-  "license": "SEE LICENSE IN license.md",
-  "bugs": {
-    "url": "https://github.com/StyleLounge/http-queue/issues"
-  },
-  "homepage": "https://github.com/StyleLounge/http-queue#readme",
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "ghooks": "^1.3.2",
-    "mocha": "^2.5.3",
-    "standard-version": "^2.4.0",
-    "tslint": "^3.13.0",
-    "typescript": "^1.8.10",
-    "typings": "^1.3.1",
-    "validate-commit-message": "^3.0.1"
-  },
-  "dependencies": {
-    "basil.js": "^0.4.4",
-    "debug": "^2.2.0",
-    "http-client": "^4.1.0",
-    "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.13.1",
-    "redux": "^3.5.2",
-    "redux-actions": "^0.10.1",
-    "redux-saga": "0.11.0"
-  }
 }

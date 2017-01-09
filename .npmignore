@@ -1,15 +1,9 @@
+/.vscode
 /src
-/typings
 /scripts
 /*.js
-/wercker.yml
-/typings.json
-/tslint.json
-/tsconfig.json
-/.npmignore
 /.editorconfig
-/.idea
-
-# Just for development
-/typings.d.ts
-*.spec.*
+/tsconfig.json
+/tslint.json
+/wercker.json
+/yarn.lock

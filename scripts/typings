@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-#
-# Script for a clean typings installation
-#
-
-rm -rf typings
-typings install
