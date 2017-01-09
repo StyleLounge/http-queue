@@ -4,7 +4,6 @@
 # Script for executing the test suite
 #
 
-npm run typings
 npm run compile
 
 mocha -- $(find dist -name '*.spec.js')
