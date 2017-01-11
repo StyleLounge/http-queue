@@ -13,10 +13,24 @@ npm i --save @style/http-queue
 ```js
 import queue from '@style/http-queue';
 
-const schedule = queue();
+async () => {
+    const { schedule, drain } = queue();
 
-schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {foo: 'bar'}});
+    // Schedule some HTTP requests
+    schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {character: 'Almec'}});
+    schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {character: 'Amee'}});
+    schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {character: 'Darth Bane'}});
+    schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {character: 'Beed'}});
+    schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {character: 'Sio Bibble'}});
+    schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {character: 'Dengar'}});
+    schedule({verb: 'POST', url: 'http://analytics.stylelounge.de', data: {character: 'Feral'}});
+
+    // Let's drain the queue ("waits" until all requests has been sent OR terminates after configurable
+    // timeout; default = 3000 ms)
+    await drain();
+};
 ```
+
 ## Debugging
 
 The library uses the [debug](https://github.com/visionmedia/debug) library internally. You can activate the debug messages by executing the following in your console:

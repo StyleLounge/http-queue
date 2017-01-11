@@ -14,11 +14,7 @@ import {
     REMOVE,
 } from "../constants/actions";
 
-import { IManifest } from "../types";
-
-export interface IState {
-    manifests: IManifest[];
-}
+import { IState, IManifest } from "../types";
 
 const createState = (): IState => ({
     manifests: [],

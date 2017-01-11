@@ -10,9 +10,9 @@ import { expect } from "chai";
 
 import { add, remove, restore } from "../actions";
 
-import { IManifest } from "../types";
+import { IManifest, IState } from "../types";
 
-import reducer, { IState } from "./";
+import reducer from "./";
 
 describe("The reducer", function () {
     it("should be able to handle 'ADD'", function (done) {
