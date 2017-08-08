@@ -39,7 +39,7 @@ const createHttpQueue = (): HttpQueue => {
     const schedule = (manifest: IRequest) => {
         store.dispatch(
             add({
-                id: uuid(),
+                id: Number(uuid()),
                 ...manifest,
             })
         );
