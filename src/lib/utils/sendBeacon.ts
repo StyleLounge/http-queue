@@ -33,7 +33,13 @@ const sendBeacon = async (manifest: IManifest): Promise<boolean> => {
 
         dbg(`Sending data via "sendBeacon" (size: ${blob.size}).`);
 
-        return nav.sendBeacon(manifest.url, blob);
+        try {
+            nav.sendBeacon(manifest.url, blob);
+            return true;
+        } catch (e) {
+            dbg(`Sending data via "sendBeacon" failed. Reason ${e}).`);
+            return false;
+        }
     }
 
     return false;
