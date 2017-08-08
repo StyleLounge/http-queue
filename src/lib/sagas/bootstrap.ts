@@ -11,6 +11,7 @@ import { put } from "redux-saga/effects";
 
 import storage from "../utils/storage";
 import { restore } from "../actions";
+import IManifest from "../types/IManifest";
 
 const dbg: debug.IDebugger = debug("@stylelounge/http-queue:sagas:bootstrap");
 
@@ -26,7 +27,7 @@ function* bootstrap(): any {
             if (items.hasOwnProperty(key)) {
                 const item = items[key];
 
-                yield put(restore(item));
+                yield put(restore(item as IManifest));
             }
         }
     } else {
