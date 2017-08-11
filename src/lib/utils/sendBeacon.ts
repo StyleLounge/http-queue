@@ -7,8 +7,6 @@
  */
 import * as debug from "debug";
 
-const http = require("http-client");
-
 import "isomorphic-fetch";
 
 import { IManifest } from "../types";
@@ -16,17 +14,15 @@ import { IManifest } from "../types";
 const dbg: debug.IDebugger = debug("@stylelounge/http-queue:utils:sendBeacon");
 
 const sendHttp = async (manifest: IManifest) => {
-    const {createFetch, accept, json, method} = http;
-
-    const post = createFetch(
-        method(manifest.verb.toUpperCase()),
-        accept("application/json"),
-        json(manifest.data || {})
-    );
-
     dbg(`Sending data via "XHR".`);
-
-    await post(manifest.url);
+    await window.fetch(new Request(manifest.url), {
+        body: JSON.stringify(manifest.data || {}),
+        headers: new Headers({
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+        }),
+        method: manifest.verb.toUpperCase(),
+    });
 };
 
 const sendBeacon = async (manifest: IManifest): Promise<boolean> => {

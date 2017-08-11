@@ -8,14 +8,13 @@
 
 import * as debug from "debug";
 
-import uuid from "./utils/uuid";
-
 import createStore from "./store";
 import sagas from "./sagas";
 import reducer from "./reducer";
 
 import { IRequest } from "./types";
 import { add } from "./actions";
+import numericUuid from "./utils/numericUuid";
 
 const dbg: debug.IDebugger = debug("@stylelounge/http-queue");
 
@@ -39,7 +38,7 @@ const createHttpQueue = (): HttpQueue => {
     const schedule = (manifest: IRequest) => {
         store.dispatch(
             add({
-                id: uuid(),
+                id: numericUuid(),
                 ...manifest,
             })
         );
