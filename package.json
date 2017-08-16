@@ -48,7 +48,9 @@
     "standard-version": "^2.4.0",
     "tslint": "^3.13.0",
     "typescript": "^2.1.4",
-    "validate-commit-message": "^3.0.1"
+    "validate-commit-message": "^3.0.1",
+    "sinon": "^3.2.0",
+    "@types/sinon": "^2.3.3"
   },
   "dependencies": {
     "basil.js": "^0.4.4",

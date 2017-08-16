@@ -15,7 +15,7 @@ const dbg: debug.IDebugger = debug("@stylelounge/http-queue:utils:sendBeacon");
 
 const sendHttp = async (manifest: IManifest) => {
     dbg(`Sending data via "XHR".`);
-    await window.fetch(new Request(manifest.url), {
+    await fetch(new Request(manifest.url), {
         body: JSON.stringify(manifest.data || {}),
         headers: new Headers({
             "Accept": "application/json",
@@ -34,8 +34,7 @@ const sendBeacon = async (manifest: IManifest): Promise<boolean> => {
         dbg(`Sending data via "sendBeacon" (size: ${blob.size}).`);
 
         try {
-            nav.sendBeacon(manifest.url, blob);
-            return true;
+            return nav.sendBeacon(manifest.url, blob);
         } catch (e) {
             dbg(`Sending data via "sendBeacon" failed. Reason ${e}).`);
             return false;
