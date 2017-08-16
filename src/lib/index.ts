@@ -14,7 +14,7 @@ import reducer from "./reducer";
 
 import { IRequest } from "./types";
 import { add } from "./actions";
-import numericUuid from "./utils/numericUuid";
+import numericRandomId from "./utils/numericRandomId";
 
 const dbg: debug.IDebugger = debug("@stylelounge/http-queue");
 
@@ -38,7 +38,7 @@ const createHttpQueue = (): HttpQueue => {
     const schedule = (manifest: IRequest) => {
         store.dispatch(
             add({
-                id: numericUuid(),
+                id: numericRandomId(),
                 ...manifest,
             })
         );
