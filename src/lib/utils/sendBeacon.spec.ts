@@ -32,7 +32,7 @@ describe("sendBeacon ", () => {
         global.navigator.restore();
         global.fetch.restore();
         global.Blob.restore();
-    })
+    });
     it("should send request with beacon", async (done) => {
         global.navigator.sendBeacon.resolves(true);
         await send(manifest);
