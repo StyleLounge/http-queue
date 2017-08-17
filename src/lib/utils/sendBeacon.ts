@@ -25,8 +25,8 @@ const sendHttp = async (manifest: IManifest) => {
     });
 };
 
-const sendBeacon = async (manifest: IManifest): Promise<boolean> => {
-    const nav: any = navigator as any;
+const sendBeacon = (manifest: IManifest): boolean => {
+    const nav: Navigator = navigator;
 
     if (nav.sendBeacon) {
         const blob = new Blob([JSON.stringify(manifest.data || {})], { type: "application/json; charset=UTF-8" });
@@ -45,7 +45,7 @@ const sendBeacon = async (manifest: IManifest): Promise<boolean> => {
 };
 
 const send = async (manifest: IManifest) => {
-    if (!(await sendBeacon(manifest))) {
+    if (!(sendBeacon(manifest))) {
         dbg(`Okay, seems like "sendBeacon" failed. Will retry with "XHR".`);
 
         await sendHttp(manifest);

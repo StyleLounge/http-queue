@@ -31,13 +31,13 @@ describe("sendBeacon ", function () {
         global.Blob.restore();
     });
     it("should send request with beacon", async function () {
-        global.navigator.sendBeacon.resolves(true);
+        global.navigator.sendBeacon.returns(true);
         await send(manifest);
         sinon.assert.calledOnce(global.navigator.sendBeacon);
         sinon.assert.notCalled(global.fetch);
     });
     it("should send request with fetch when sendBeacon returns false", async function () {
-        global.navigator.sendBeacon.resolves(false);
+        global.navigator.sendBeacon.returns(false);
         await send(manifest);
         sinon.assert.calledOnce(global.fetch);
         sinon.assert.calledOnce(global.navigator.sendBeacon);
