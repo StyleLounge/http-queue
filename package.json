@@ -1,6 +1,6 @@
 {
   "name": "@style/http-queue",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "A fire-and-forget HTTP request queue implementation for browsers.",
   "author": "SNM Style Net Media GmbH",
   "contributors": [
@@ -48,12 +48,13 @@
     "standard-version": "^2.4.0",
     "tslint": "^3.13.0",
     "typescript": "^2.1.4",
-    "validate-commit-message": "^3.0.1"
+    "validate-commit-message": "^3.0.1",
+    "sinon": "^3.2.0",
+    "@types/sinon": "^2.3.3"
   },
   "dependencies": {
     "basil.js": "^0.4.4",
     "debug": "^2.2.0",
-    "http-client": "^4.1.0",
     "isomorphic-fetch": "^2.2.1",
     "redux": "^3.5.2",
     "redux-actions": "^0.10.1",
