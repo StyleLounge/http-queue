@@ -21,20 +21,15 @@ describe("sendBeacon ", () => {
         url: "/some-mock-url",
         verb: "POST",
     };
-    // tslint:disable-next-line:only-arrow-functions
-    beforeEach(function() {
-        global.navigator = sinon.stub(global, "navigator");
-        global.navigator.sendBeacon = sinon.stub(global.navigator, "sendBeacon");
-        global.Blob = sinon.stub(global, "Blob");
+
+    beforeEach(() => {
+        global.Blob = sinon.stub();
+        global.navigator = { sendBeacon: sinon.stub() };
         global.fetch = sinon.stub(global, "fetch");
     });
 
-    // tslint:disable-next-line:only-arrow-functions
-    afterEach(function() {
-        global.navigator.sendBeacon.restore();
-        global.navigator.restore();
+    afterEach(() => {
         global.fetch.restore();
-        global.Blob.restore();
     });
 
     it("should send request with beacon", async () => {

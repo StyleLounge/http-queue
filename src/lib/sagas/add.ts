@@ -29,7 +29,7 @@ function* worker(action: Action<IManifest>): any {
     storage.setData(items);
 }
 
-function* add(): any {
+function* add(): Iterable<any> {
     yield* takeEvery(ADD, worker);
 }
 
