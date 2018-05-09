@@ -9,7 +9,7 @@
         "outDir": "./dist",
         "forceConsistentCasingInFileNames": true,
         "pretty": true,
-        "typeRoots": ["./node_modules/@types", "./node_modules/@style-types"],
+        "typeRoots": ["./node_modules/@types"],
         "noImplicitAny": true
     },
     "exclude": [
