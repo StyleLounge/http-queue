@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.1.3"></a>
+## [3.1.3](https://github.com/StyleLounge/http-queue/compare/v3.1.2...v3.1.3) (2018-05-09)
+
+
+### Bug Fixes
+
+* trying to make the wercker pipeline to work STYLE-10657 ([0eb39c9](https://github.com/StyleLounge/http-queue/commit/0eb39c9))
+
+
+
 <a name="3.1.2"></a>
 ## [3.1.2](https://github.com/StyleLounge/http-queue/compare/v3.1.1...v3.1.2) (2018-05-09)
 
