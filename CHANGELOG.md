@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.1.1"></a>
+## [3.1.1](https://github.com/StyleLounge/http-queue/compare/v3.1.0...v3.1.1) (2018-05-09)
+
+
+### Bug Fixes
+
+* adapts scripts to current generator state STYLE-10657 ([3cab175](https://github.com/StyleLounge/http-queue/commit/3cab175))
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/StyleLounge/http-queue/compare/v2.0.1...v3.1.0) (2018-05-09)
 
