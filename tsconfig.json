@@ -1,23 +1,35 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es6",
-        "sourceMap": true,
-        "declaration": true,
-        "rootDir": "./src",
-        "sourceRoot": "./src",
-        "outDir": "./dist",
-        "forceConsistentCasingInFileNames": true,
-        "pretty": true,
-        "typeRoots": ["./node_modules/@types"],
-        "noImplicitAny": true,
-        "lib": [
-          "es2015",
-          "dom"
-        ]
-    },
-    "exclude": [
-        "node_modules",
-        "dist"
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "sourceMap": true,
+    "declaration": true,
+    "rootDir": "./src",
+    "sourceRoot": "./src",
+    "outDir": "./dist",
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true,
+    "pretty": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@style-types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
     ]
+  },
+  "exclude": [
+    ".*",
+    "_*",
+    "_builds",
+    ".idea",
+    "_steps",
+    ".wercker",
+    "dist",
+    "_cache",
+    "kbomb-output",
+    "kbomb-input",
+    "node_modules"
+  ]
 }
