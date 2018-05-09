@@ -68,5 +68,5 @@ const createHttpQueue = (forceXHR: boolean): IHttpQueue => {
     return { drain, schedule };
 };
 
-export default createHttpQueue;
 export { IHttpQueue };
+export default createHttpQueue;
