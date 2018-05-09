@@ -45,9 +45,11 @@ const sendBeacon = (manifest: IManifest): boolean => {
 };
 
 const send = async (manifest: IManifest) => {
-    if (!(sendBeacon(manifest))) {
+    if (manifest.forceXHR === true) {
+        dbg(`Sending data directly with "XHR" because forceXHR is set to true.`);
+        await sendHttp(manifest);
+    } else if (!(sendBeacon(manifest))) {
         dbg(`Okay, seems like "sendBeacon" failed. Will retry with "XHR".`);
-
         await sendHttp(manifest);
     }
 };

@@ -25,19 +25,20 @@ type HttpQueue = {
     drain: (timeout?: number) => Promise<void>
 };
 
-const createHttpQueue = (): HttpQueue => {
+type HttpQueueOptions = {
+    forceXHR?: boolean
+};
+
+const createHttpQueue = (options: HttpQueueOptions): HttpQueue => {
     const store = createStore({ reducer, middlewares });
 
     /**
      * Schedules a HTTP request.
-     *
-     * @param {IRequest} request The request definition
-     * @returns void
-     *
      */
     const schedule = (manifest: IRequest) => {
         store.dispatch(
             add({
+                forceXHR: !!options.forceXHR,
                 id: numericRandomId(),
                 ...manifest,
             })
@@ -45,13 +46,7 @@ const createHttpQueue = (): HttpQueue => {
     };
 
     /**
-     * Drains the queue and resolves when the queue is empty OR a
-     * given timeout is exceeded.
-     *
-     * @param {number} timeout Resolves the promise after timeout has exceeded
-     *
-     * @returns {Promise<void>}
-     *
+     * Drains the queue and resolves when the queue is empty OR a given timeout is exceeded.
      */
     const drain = async (timeout: number = 3000) => {
         dbg(`Drain requested (timeout: ${timeout})`);

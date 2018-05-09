@@ -14,6 +14,7 @@ describe("sendBeacon ", function () {
         data: {
             mock: "data",
         },
+        forceXHR: false,
         id: 1,
         url: "/some-mock-url",
         verb: "POST",
@@ -47,5 +48,10 @@ describe("sendBeacon ", function () {
         await send(manifest);
         sinon.assert.calledOnce(global.fetch);
         sinon.assert.calledOnce(global.navigator.sendBeacon);
+    });
+    it("should send request with fetch when forceXHR is set to true.", async function () {
+        await send({ ...manifest, forceXHR: true });
+        sinon.assert.calledOnce(global.fetch);
+        sinon.assert.notCalled(global.navigator.sendBeacon);
     });
 });

@@ -8,6 +8,7 @@
 
 interface IManifest {
     id: number;
+    forceXHR: boolean;
     verb: string;
     url: string;
     data?: Object;

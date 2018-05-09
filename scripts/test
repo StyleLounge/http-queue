@@ -6,4 +6,4 @@
 
 npm run compile
 
-mocha -- $(find dist -name '*.spec.js')
+node_modules/.bin/mocha -- $(find dist -name '*.spec.js')

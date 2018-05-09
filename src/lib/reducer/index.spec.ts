@@ -18,6 +18,7 @@ describe("The reducer", function () {
     it("should be able to handle 'ADD'", function (done) {
         const manifest: IManifest = {
             data: { foo: "bar" },
+            forceXHR: false,
             id: 1,
             url: "http://stylelounge.de",
             verb: "GET",
@@ -45,6 +46,7 @@ describe("The reducer", function () {
     it("should be able to handle 'REMOVE'", function (done) {
         const manifest: IManifest = {
             data: { foo: "bar" },
+            forceXHR: false,
             id: 1,
             url: "http://stylelounge.de",
             verb: "GET",
@@ -70,6 +72,7 @@ describe("The reducer", function () {
     it("should be able to handle 'RESTORE'", function (done) {
         const manifest: IManifest = {
             data: { foo: "bar" },
+            forceXHR: false,
             id: 1,
             url: "http://stylelounge.de",
             verb: "GET",
