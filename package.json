@@ -10,7 +10,7 @@
     }
   ],
   "scripts": {
-    "build": "./script/build",
+    "build": "./scripts/build",
     "lint": "./scripts/lint",
     "test": "./scripts/test",
     "release": "/.scripts/release",
