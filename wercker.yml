@@ -7,8 +7,8 @@ build:
     npm_registry_token: $NPM_REGISTRY_TOKEN
 
   - script:
-    name: run build
-    code: ./scripts/build
+    name: run setup
+    code: ./scripts/setup
 
   - script:
     name: run lint

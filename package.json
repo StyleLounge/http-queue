@@ -3,6 +3,7 @@
   "version": "3.1.3",
   "description": "A fire-and-forget HTTP request queue implementation for browsers.",
   "author": "StyleLounge GmbH",
+  "preferGlobal": false,
   "contributors": [],
   "scripts": {
     "get-version": "ci-toolkit get-version",
@@ -44,7 +45,6 @@
     "mocha": "^5.1.1",
     "nyc": "^11.7.2",
     "sinon": "^5.0.7",
-    "standard-version": "^4.3.0",
     "ts-node": "^6.0.3",
     "tslint": "^5.10.0",
     "typescript": "^2.5.3"
