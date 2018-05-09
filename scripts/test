@@ -4,4 +4,4 @@ set -e
 
 export PATH=node_modules/.bin:$PATH
 
-nyc _mocha --exit --require ts-node/register 'src/**/*.spec.ts'
+nyc _mocha --require ts-node/register 'src/**/*.spec.ts'

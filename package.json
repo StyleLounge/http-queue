@@ -2,7 +2,7 @@
   "name": "@style/http-queue",
   "version": "3.0.0",
   "description": "A fire-and-forget HTTP request queue implementation for browsers.",
-  "author": "SNM Style Net Media GmbH",
+  "author": "StyleLounge GmbH",
   "contributors": [
     {
       "name": "André König",
@@ -10,15 +10,8 @@
     }
   ],
   "scripts": {
-    "build": "./scripts/build",
-    "compile": "./scripts/compile",
-    "lint": "./scripts/lint",
-    "test": "./scripts/test",
-    "watch": "./scripts/watch",
-    "precommit": "./scripts/precommit",
-    "commitmsg": "./scripts/commitmsg",
-    "validate-commit-message": "./scripts/validate-commit-message",
-    "release": "./scripts/release"
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "prepush": "./scripts/lint --nofix && ./scripts/test && ./scripts/build"
   },
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -37,21 +30,22 @@
   },
   "homepage": "https://github.com/StyleLounge/http-queue#readme",
   "devDependencies": {
-    "@types/chai": "^3.4.34",
-    "@types/debug": "^0.0.29",
-    "@types/mocha": "^2.2.36",
-    "@types/node": "^6.0.58",
+    "@types/chai": "^4.1.3",
+    "@types/debug": "0.0.30",
+    "@types/mocha": "^5.2.0",
+    "@types/node": "^10.0.6",
     "@types/redux-actions": "^1.2.2",
-    "@types/sinon": "^2.3.3",
-    "chai": "^3.5.0",
-    "husky": "^0.12.0",
-    "mocha": "^2.5.3",
+    "@types/sinon": "^4.3.1",
+    "chai": "^4.1.2",
+    "commitlint": "^6.2.0",
+    "husky": "^0.14.3",
+    "mocha": "^5.1.1",
     "nyc": "^11.7.2",
-    "sinon": "^3.2.0",
+    "sinon": "^5.0.7",
     "standard-version": "^2.4.0",
     "ts-node": "^6.0.3",
-    "tslint": "^3.13.0",
-    "typescript": "^2.1.4",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3",
     "validate-commit-message": "^3.0.1"
   },
   "dependencies": {

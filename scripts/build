@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-#
-# Script for performing a build
-#
+set -e
 
-rm -rf ./node_modules ./dist
+npm install
 
-npm i
-npm run compile
+rm -rf dist
+node_modules/.bin/tsc

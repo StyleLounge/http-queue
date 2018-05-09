@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+rm -rf node_modules dist nyc_output
+
+./scripts/build
