@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-#
-# Script for executing the test suite
-#
+set -e
 
-npm run compile
+export PATH=node_modules/.bin:$PATH
 
-node_modules/.bin/mocha -- $(find dist -name '*.spec.js')
+nyc _mocha --exit --require ts-node/register 'src/**/*.spec.ts'

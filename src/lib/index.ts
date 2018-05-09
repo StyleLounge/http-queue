@@ -25,11 +25,7 @@ type HttpQueue = {
     drain: (timeout?: number) => Promise<void>
 };
 
-type HttpQueueOptions = {
-    forceXHR?: boolean
-};
-
-const createHttpQueue = (options: HttpQueueOptions): HttpQueue => {
+const createHttpQueue = (forceXHR: boolean): HttpQueue => {
     const store = createStore({ reducer, middlewares });
 
     /**
@@ -38,7 +34,7 @@ const createHttpQueue = (options: HttpQueueOptions): HttpQueue => {
     const schedule = (manifest: IRequest) => {
         store.dispatch(
             add({
-                forceXHR: !!options.forceXHR,
+                forceXHR,
                 id: numericRandomId(),
                 ...manifest,
             })
