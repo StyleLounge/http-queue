@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+export PATH=node_modules/.bin:$PATH
+
+ci-toolkit npm-extended-publish
