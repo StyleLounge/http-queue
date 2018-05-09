@@ -41,11 +41,11 @@
     "husky": "^0.14.3",
     "mocha": "^5.1.1",
     "nyc": "^11.7.2",
-    "sinon": "^5.0.7",
+    "sinon": "^3.3.0",
     "standard-version": "^2.4.0",
     "ts-node": "^6.0.3",
     "tslint": "^5.10.0",
-    "typescript": "^2.8.3",
+    "typescript": "^2.1.4",
     "validate-commit-message": "^3.0.1"
   },
   "dependencies": {

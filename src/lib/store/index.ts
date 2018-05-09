@@ -6,14 +6,14 @@
  * MIT Licensed
  */
 
-import { createStore, applyMiddleware, compose, Store } from "redux";
+import { applyMiddleware, compose, createStore, Store } from "redux";
 import createSagaMiddleware from "redux-saga";
 
 import { IState } from "../types";
 
 export interface IMiddlewares {
-    sagas: Function[];
-    enhancers?: Object;
+    sagas: Array<() => void>;
+    enhancers?: object;
 }
 
 export interface IOptions {
@@ -30,13 +30,13 @@ function configureStore(options: IOptions): Store<IState> {
         reducer,
         initialState,
         compose(
-            applyMiddleware(sagaMiddleware)
-        )
+            applyMiddleware(sagaMiddleware),
+        ),
     );
 
-    options.middlewares.sagas.forEach(saga => sagaMiddleware.run(saga as any));
+    options.middlewares.sagas.forEach((saga) => sagaMiddleware.run(saga as any));
 
     return store;
-};
+}
 
 export default configureStore;

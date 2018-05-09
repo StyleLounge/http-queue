@@ -8,8 +8,8 @@
 
 import { createAction } from "redux-actions";
 
-import { IManifest } from "../types";
 import { ADD } from "../constants/actions";
+import { IManifest } from "../types";
 
 const add = createAction<IManifest>(ADD);
 

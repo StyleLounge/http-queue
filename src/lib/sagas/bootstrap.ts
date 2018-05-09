@@ -9,9 +9,9 @@
 import * as debug from "debug";
 import { put } from "redux-saga/effects";
 
-import storage from "../utils/storage";
 import { restore } from "../actions";
 import IManifest from "../types/IManifest";
+import storage from "../utils/storage";
 
 const dbg: debug.IDebugger = debug("@stylelounge/http-queue:sagas:bootstrap");
 

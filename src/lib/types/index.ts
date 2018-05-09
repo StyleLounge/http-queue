@@ -13,5 +13,5 @@ import IState from "./IState";
 export {
     IManifest,
     IRequest,
-    IState
+    IState,
 };

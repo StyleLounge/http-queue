@@ -13,5 +13,5 @@ import restore from "./restore";
 export {
     add,
     remove,
-    restore
-}
+    restore,
+};

@@ -8,24 +8,24 @@
 
 import * as debug from "debug";
 
-import createStore from "./store";
-import sagas from "./sagas";
 import reducer from "./reducer";
+import sagas from "./sagas";
+import createStore from "./store";
 
-import { IRequest } from "./types";
 import { add } from "./actions";
+import { IRequest } from "./types";
 import numericRandomId from "./utils/numericRandomId";
 
 const dbg: debug.IDebugger = debug("@stylelounge/http-queue");
 
 const middlewares = { sagas };
 
-type HttpQueue = {
-    schedule: (manifest: IRequest) => void,
-    drain: (timeout?: number) => Promise<void>
-};
+interface IHttpQueue {
+    schedule: (manifest: IRequest) => void;
+    drain: (timeout?: number) => Promise<void>;
+}
 
-const createHttpQueue = (forceXHR: boolean): HttpQueue => {
+const createHttpQueue = (forceXHR: boolean): IHttpQueue => {
     const store = createStore({ reducer, middlewares });
 
     /**
@@ -37,7 +37,7 @@ const createHttpQueue = (forceXHR: boolean): HttpQueue => {
                 forceXHR,
                 id: numericRandomId(),
                 ...manifest,
-            })
+            }),
         );
     };
 
@@ -54,7 +54,7 @@ const createHttpQueue = (forceXHR: boolean): HttpQueue => {
         let drained = false;
 
         do {
-            await new Promise(resolve => setTimeout(resolve, NAP_TIME));
+            await new Promise((resolve) => setTimeout(resolve, NAP_TIME));
 
             actualCatNaps = actualCatNaps + 1;
 
@@ -69,4 +69,4 @@ const createHttpQueue = (forceXHR: boolean): HttpQueue => {
 };
 
 export default createHttpQueue;
-export { HttpQueue };
+export { IHttpQueue };

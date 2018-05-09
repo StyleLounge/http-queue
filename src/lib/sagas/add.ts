@@ -7,8 +7,8 @@
  */
 
 import * as debug from "debug";
-import { takeEvery } from "redux-saga";
 import { Action } from "redux-actions";
+import { takeEvery } from "redux-saga";
 
 import { IManifest } from "../types";
 import storage from "../utils/storage";
@@ -20,7 +20,7 @@ import {
 const dbg: debug.IDebugger = debug("@stylelounge/http-queue:sagas:add");
 
 function* worker(action: Action<IManifest>): any {
-    let items = storage.getData() as Object[] || [];
+    let items = storage.getData() as object[] || [];
 
     items = [...items, action.payload];
 

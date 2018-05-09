@@ -14,8 +14,8 @@ import { IManifest, IState } from "../types";
 
 import reducer from "./";
 
-describe("The reducer", function () {
-    it("should be able to handle 'ADD'", function (done) {
+describe("The reducer", () => {
+    it("should be able to handle 'ADD'", (done) => {
         const manifest: IManifest = {
             data: { foo: "bar" },
             forceXHR: false,
@@ -43,7 +43,7 @@ describe("The reducer", function () {
         done();
     });
 
-    it("should be able to handle 'REMOVE'", function (done) {
+    it("should be able to handle 'REMOVE'", (done) => {
         const manifest: IManifest = {
             data: { foo: "bar" },
             forceXHR: false,
@@ -69,7 +69,7 @@ describe("The reducer", function () {
         done();
     });
 
-    it("should be able to handle 'RESTORE'", function (done) {
+    it("should be able to handle 'RESTORE'", (done) => {
         const manifest: IManifest = {
             data: { foo: "bar" },
             forceXHR: false,

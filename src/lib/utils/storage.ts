@@ -47,7 +47,7 @@ export class StorageAbstraction {
         return state ? state.data : undefined;
     }
 
-    public setData(data: Object): void {
+    public setData(data: object): void {
         const state = this.getRawData();
 
         state.data = data;
@@ -62,7 +62,7 @@ export class StorageAbstraction {
         };
     }
 
-    private setRawData(data: Object): void {
+    private setRawData(data: object): void {
         this.storage.set(NAMESPACE, data);
     }
 

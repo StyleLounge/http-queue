@@ -8,8 +8,8 @@
 
 import { createAction } from "redux-actions";
 
-import { IManifest } from "../types";
 import { RESTORE } from "../constants/actions";
+import { IManifest } from "../types";
 
 const restore = createAction<IManifest>(RESTORE);
 

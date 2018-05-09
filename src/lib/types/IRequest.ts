@@ -9,7 +9,7 @@
 interface IRequest {
     verb: string;
     url: string;
-    data?: Object;
+    data?: object;
 }
 
 export default IRequest;
