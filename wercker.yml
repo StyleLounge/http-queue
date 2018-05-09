@@ -1,4 +1,4 @@
-box: node
+box: node:8
 
 build:
   steps:
@@ -7,16 +7,16 @@ build:
       auth_token: $NPM_REGISTRY_TOKEN
 
     - script:
-      name: npm run build
-      code: npm run build
+        name: run build
+        code: ./scripts/build
 
     - script:
-      name: npm run lint
-      code: npm run lint
+        name: run lint
+        code: ./scripts/lint
 
     - script:
-      name: npm run test
-      code: npm run test
+        name: run test
+        code: ./scripts/test
 
   after-steps:
     - install-packages:
