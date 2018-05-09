@@ -19,6 +19,10 @@ build:
     code: ./scripts/test
 
   - script:
+    name: show dir output
+    code: ls -lisa
+
+  - script:
     name: copy to output
     code: |
       shopt -s extglob
@@ -39,6 +43,10 @@ release:
   - stylelounge/prepare-box@0.1.4:
     private_key: $GITHUB_PRIVATE_KEY
     npm_registry_token: $NPM_REGISTRY_TOKEN
+
+  - script:
+    name: show dir output
+    code: ls -lisa
 
   - script:
     name: run release
