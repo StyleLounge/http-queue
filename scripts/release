@@ -1,14 +1,6 @@
 #!/usr/bin/env bash
 
-npm run build
-npm lint test
-npm run lint
+set -e
+export PATH=node_modules/.bin:$PATH
 
-standard-version --no-verify
-
-# Push changes into the current branch
-git rev-parse --abbrev-ref HEAD | xargs git push origin
-
-git push --tags
-
-npm publish --access=public
+ci-toolkit release $@
