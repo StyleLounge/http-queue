@@ -18,6 +18,12 @@ build:
     name: run test
     code: ./scripts/test
 
+  - script:
+    name: copy to output
+    code: |
+      shopt -s extglob
+      cp -rL /pipeline/source/. $WERCKER_OUTPUT_DIR
+
   after-steps:
   - install-packages:
     packages: ruby
@@ -37,6 +43,12 @@ release:
   - script:
     name: run release
     code: ./scripts/release
+
+  - script:
+    name: copy to output
+    code: |
+      shopt -s extglob
+      cp -rL /pipeline/source/. $WERCKER_OUTPUT_DIR
 
 publish:
   steps:
