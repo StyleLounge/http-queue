@@ -1,6 +1,6 @@
 root = true
 
-[*]
+[*.ts]
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
@@ -9,7 +9,13 @@ indent_style = space
 indent_size = 4
 
 [*.json]
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
 indent_size = 2
 
 [*.yml]
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
 indent_size = 2

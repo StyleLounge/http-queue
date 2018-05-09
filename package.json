@@ -3,19 +3,16 @@
   "version": "3.1.2",
   "description": "A fire-and-forget HTTP request queue implementation for browsers.",
   "author": "StyleLounge GmbH",
-  "contributors": [
-    {
-      "name": "André König",
-      "email": "andre.koenig@stylelounge.com"
-    }
-  ],
+  "contributors": [],
   "scripts": {
     "get-version": "ci-toolkit get-version",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "prepush": "./scripts/lint --nofix && ./scripts/test && ./scripts/build"
   },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StyleLounge/http-queue.git"
@@ -27,6 +24,11 @@
   ],
   "license": "SEE LICENSE IN license.md",
   "homepage": "https://github.com/StyleLounge/http-queue#readme",
+  "types": "./dist/index.d.ts",
+  "typescript": {
+    "definition": "dist/index.d.ts"
+  },
+  "typings": "./dist/index.d.ts",
   "devDependencies": {
     "@style/ci-toolkit": "^6.3.1",
     "@style/xray": "^1.4.3",
@@ -42,7 +44,6 @@
     "mocha": "^5.1.1",
     "nyc": "^11.7.2",
     "sinon": "^5.0.7",
-    "standard-version": "^2.4.0",
     "ts-node": "^6.0.3",
     "tslint": "^5.10.0",
     "typescript": "^2.5.3"
