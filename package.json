@@ -10,10 +10,7 @@
     }
   ],
   "scripts": {
-    "build": "./scripts/build",
-    "lint": "./scripts/lint",
-    "test": "./scripts/test",
-    "release": "/.scripts/release",
+    "get-version": "ci-toolkit get-version",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "prepush": "./scripts/lint --nofix && ./scripts/test && ./scripts/build"
   },
@@ -29,12 +26,10 @@
     "browsers"
   ],
   "license": "SEE LICENSE IN license.md",
-  "bugs": {
-    "url": "https://github.com/StyleLounge/http-queue/issues"
-  },
   "homepage": "https://github.com/StyleLounge/http-queue#readme",
   "devDependencies": {
     "@style/ci-toolkit": "^6.3.1",
+    "@style/xray": "^1.4.3",
     "@types/chai": "^4.1.3",
     "@types/debug": "0.0.30",
     "@types/mocha": "^5.2.0",
