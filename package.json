@@ -8,7 +8,7 @@
   "scripts": {
     "get-version": "ci-toolkit get-version",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "precommit": "./scripts/test",
+    "precommit": "./scripts/lint",
     "prepush": "./scripts/test && ./scripts/build"
   },
   "engines": {
