@@ -1,13 +1,23 @@
-/node_modules
-/typings
-/tmp
-/app.ts
-/index.html
-/dist
+# IDEs
+/.vscode
 /.idea
-/test.js
-*.js
-*.d.ts
-!/typings.d.ts
-*.spec.d.ts
-npm-debug.log
+
+# Dependencies
+/node_modules
+
+# Build
+/dist
+
+# Code Quality
+/coverage
+/.nyc_output
+
+# Running locally
+/.wercker
+/.env
+/.env.ci.local
+/.env.local
+gcloud-keyfile.json
+
+# tools
+/.wercker

@@ -1,20 +1,12 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
-
-import { handleActions, Action, ReducerMap } from "redux-actions";
+import { Action, handleActions, ReducerMap } from "redux-actions";
 
 import {
     ADD,
-    RESTORE,
     REMOVE,
+    RESTORE,
 } from "../constants/actions";
 
-import { IState, IManifest } from "../types";
+import { IManifest, IState } from "../types";
 
 const createState = (): IState => ({
     manifests: [],

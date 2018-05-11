@@ -1,16 +1,9 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
-
 interface IManifest {
     id: number;
+    forceXhr: boolean;
     verb: string;
     url: string;
-    data?: Object;
+    data?: object;
 }
 
 export default IManifest;

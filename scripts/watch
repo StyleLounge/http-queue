@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-#
-# Compile the application and switch into "watch mode".
-#
+set -e
 
-rm -rf ./node_modules ./dist && npm i && tsc --watch
+scripts/build
+
+node_modules/.bin/tsc --watch

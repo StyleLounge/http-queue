@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+
 set -e
 export PATH=node_modules/.bin:$PATH
 
-ci-toolkit release $@
+export IS_NPM_MODULE=true
+npm install -g @style/${1}@${2:1}

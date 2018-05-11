@@ -48,12 +48,7 @@ localStorage.debug = '@stylelounge/http-queue:*';
 | `npm run build`  | Creates a clean build of this library (installs all `npm packages`, the TS typings and compiles everything). |
 | `npm run lint` | Lints the TS code via `tslint`. |
 | `npm run test` (a.k.a. `npm test`) | Performs all the tests within the project. |
-| `npm run typings` | Installs all the necessary typings |
-| `npm run validate-commit-message` | Validates the git commit message before the actual commit action (`pre-commit`). |
-| `npm run release` | Creates a new release (fresh build, adjusts the version, adjusts the [changelog](/CHANGELOG.md), creates release tags and pushes everything).
-
-**Note:** `npm run lint` and `npm test` will be executed within a `pre-commit` hook and `npm run validate-commit-message` will be executed when the git commit message has been entered.
 
 ### Semantic commit messages
 
-This project follows a pattern, called [semantic commit messages](https://seesparkbox.com/foundry/semantic_commit_messages). By using this convention it is possible to infer the next version number based on the last commit messages when creating a new release (see `npm run release`).
+This project follows a pattern, called [semantic commit messages](https://seesparkbox.com/foundry/semantic_commit_messages). By using this convention it is possible to infer the next version number based on the last commit messages when creating a new release.

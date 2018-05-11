@@ -1,57 +1,40 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
-
 import * as debug from "debug";
 
-import createStore from "./store";
-import sagas from "./sagas";
 import reducer from "./reducer";
+import sagas from "./sagas";
+import createStore from "./store";
 
-import { IRequest } from "./types";
 import { add } from "./actions";
+import { IRequest } from "./types";
 import numericRandomId from "./utils/numericRandomId";
 
 const dbg: debug.IDebugger = debug("@stylelounge/http-queue");
 
 const middlewares = { sagas };
 
-type HttpQueue = {
-    schedule: (manifest: IRequest) => void,
-    drain: (timeout?: number) => Promise<void>
-};
+interface IHttpQueue {
+    schedule: (manifest: IRequest) => void;
+    drain: (timeout?: number) => Promise<void>;
+}
 
-const createHttpQueue = (): HttpQueue => {
+const createHttpQueue = (forceXhr: boolean): IHttpQueue => {
     const store = createStore({ reducer, middlewares });
 
     /**
      * Schedules a HTTP request.
-     *
-     * @param {IRequest} request The request definition
-     * @returns void
-     *
      */
     const schedule = (manifest: IRequest) => {
         store.dispatch(
             add({
+                forceXhr,
                 id: numericRandomId(),
                 ...manifest,
-            })
+            }),
         );
     };
 
     /**
-     * Drains the queue and resolves when the queue is empty OR a
-     * given timeout is exceeded.
-     *
-     * @param {number} timeout Resolves the promise after timeout has exceeded
-     *
-     * @returns {Promise<void>}
-     *
+     * Drains the queue and resolves when the queue is empty OR a given timeout is exceeded.
      */
     const drain = async (timeout: number = 3000) => {
         dbg(`Drain requested (timeout: ${timeout})`);
@@ -77,5 +60,5 @@ const createHttpQueue = (): HttpQueue => {
     return { drain, schedule };
 };
 
+export { IHttpQueue };
 export default createHttpQueue;
-export { HttpQueue };

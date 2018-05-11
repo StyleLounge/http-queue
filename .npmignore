@@ -1,9 +1,11 @@
-/.vscode
+/node_modules
 /src
 /scripts
-/*.js
-/.editorconfig
-/tsconfig.json
+/dist/test
+/.wercker
+/wercker.yml
 /tslint.json
-/wercker.json
-/yarn.lock
+/tsconfig.json
+/.npmignore
+/.editorconfig
+*.spec.*

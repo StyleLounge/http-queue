@@ -1,20 +1,13 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
 import * as debug from "debug";
-import { take, put, actionChannel, call } from "redux-saga/effects";
+import { actionChannel, call, put, take } from "redux-saga/effects";
 
 import { IManifest } from "../types";
 
+import { remove } from "../actions";
 import {
     ADD,
     RESTORE,
 } from "../constants/actions";
-import { remove } from "../actions";
 import sendBeacon from "../utils/sendBeacon";
 
 const NAMESPACE = "@stylelounge/http-queue:sagas:worker";
@@ -36,6 +29,7 @@ function* worker(): any {
 
             dbg("Performed HTTP request and everything went fine.");
         } catch (err) {
+            // tslint:disable-next-line:no-console
             console.warn(`${NAMESPACE}: ${err.message} (tried ${manifest.verb} ${manifest.url}).`);
         }
 

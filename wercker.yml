@@ -1,28 +1,65 @@
-box: node
+box: node:8
 
 build:
   steps:
-    - samverschueren/npm-private-registry:
-      host: $NPM_REGISTRY_HOST
-      auth_token: $NPM_REGISTRY_TOKEN
+  - stylelounge/prepare-box@0.1.4:
+    private_key: $GITHUB_PRIVATE_KEY
+    npm_registry_token: $NPM_REGISTRY_TOKEN
 
-    - script:
-      name: npm run build
-      code: npm run build
+  - script:
+    name: run setup
+    code: ./scripts/setup
 
-    - script:
-      name: npm run lint
-      code: npm run lint
+  - script:
+    name: run lint
+    code: ./scripts/lint
 
-    - script:
-      name: npm run test
-      code: npm run test
+  - script:
+    name: run test
+    code: ./scripts/test
+
+  - script:
+    name: copy to output
+    code: |
+      shopt -s extglob
+      cp -rL /pipeline/source/. $WERCKER_OUTPUT_DIR
 
   after-steps:
-    - install-packages:
-      packages: ruby
-    - wantedly/pretty-slack-notify:
-      webhook_url: $SLACK_WEBHOOK_URL
-      channel: dev-ci
-      username: wercker-bot
-      notify_on: "failed"
+  - install-packages:
+    packages: ruby
+
+  - wantedly/pretty-slack-notify:
+    webhook_url: $SLACK_WEBHOOK_URL
+    channel: dev-ci
+    username: wercker-bot
+    notify_on: "failed"
+
+release:
+  steps:
+  - stylelounge/prepare-box@0.1.4:
+    private_key: $GITHUB_PRIVATE_KEY
+    npm_registry_token: $NPM_REGISTRY_TOKEN
+
+  - script:
+    name: run release
+    code: ./scripts/release
+
+  - script:
+    name: copy to output
+    code: |
+      shopt -s extglob
+      cp -rL /pipeline/source/. $WERCKER_OUTPUT_DIR
+
+publish:
+  steps:
+  - stylelounge/prepare-box@0.1.4:
+    private_key: $GITHUB_PRIVATE_KEY
+    npm_registry_token: $NPM_REGISTRY_TOKEN
+
+  - script:
+    name: run get-version
+    code: export VERSION_TAG=$(npm run get-version)
+
+  - script:
+    name: publish application
+    code: ./scripts/publish $WERCKER_GIT_REPOSITORY $VERSION_TAG

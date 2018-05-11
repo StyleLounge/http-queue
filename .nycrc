@@ -1,0 +1,26 @@
+{
+    "require": [
+        "ts-node/register"
+    ],
+    "reporter": [
+        "lcov",
+        "text"
+    ],
+    "sourceMap": true,
+    "instrument": true,
+    "extension": [
+        ".ts"
+    ],
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "src/**/models",
+        "src/**/test",
+        "src/**/I*.ts",
+        "src/**/*.spec.ts",
+        "**/*.d.ts",
+        "src/lib/main.ts"
+    ],
+    "all": true
+}
