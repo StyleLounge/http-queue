@@ -1,11 +1,3 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
-
 import { applyMiddleware, compose, createStore, Store } from "redux";
 import createSagaMiddleware from "redux-saga";
 
@@ -34,7 +26,7 @@ function configureStore(options: IOptions): Store<IState> {
         ),
     );
 
-    options.middlewares.sagas.forEach((saga) => sagaMiddleware.run(saga as any));
+    options.middlewares.sagas.forEach(saga => sagaMiddleware.run(saga as any));
 
     return store;
 }

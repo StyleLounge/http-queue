@@ -1,11 +1,3 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
-
 import { expect } from "chai";
 
 import { add, remove, restore } from "../actions";
@@ -18,7 +10,7 @@ describe("The reducer", () => {
     it("should be able to handle 'ADD'", (done) => {
         const manifest: IManifest = {
             data: { foo: "bar" },
-            forceXHR: false,
+            forceXhr: false,
             id: 1,
             url: "http://stylelounge.de",
             verb: "GET",
@@ -46,7 +38,7 @@ describe("The reducer", () => {
     it("should be able to handle 'REMOVE'", (done) => {
         const manifest: IManifest = {
             data: { foo: "bar" },
-            forceXHR: false,
+            forceXhr: false,
             id: 1,
             url: "http://stylelounge.de",
             verb: "GET",
@@ -72,7 +64,7 @@ describe("The reducer", () => {
     it("should be able to handle 'RESTORE'", (done) => {
         const manifest: IManifest = {
             data: { foo: "bar" },
-            forceXHR: false,
+            forceXhr: false,
             id: 1,
             url: "http://stylelounge.de",
             verb: "GET",

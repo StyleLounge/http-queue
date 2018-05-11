@@ -1,11 +1,3 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
-
 import * as debug from "debug";
 
 const Basil = require("basil.js");

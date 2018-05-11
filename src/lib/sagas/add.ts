@@ -1,11 +1,3 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
-
 import * as debug from "debug";
 import { Action } from "redux-actions";
 import { takeEvery } from "redux-saga";

@@ -2,6 +2,8 @@
 
 set -e
 
+./scripts/lint
+
 export PATH=node_modules/.bin:$PATH
 
 nyc _mocha --require ts-node/register 'src/**/*.spec.ts'

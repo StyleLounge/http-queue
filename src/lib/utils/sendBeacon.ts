@@ -1,10 +1,3 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
 import * as debug from "debug";
 
 import "isomorphic-fetch";
@@ -45,9 +38,10 @@ const sendBeacon = (manifest: IManifest): boolean => {
 };
 
 const send = async (manifest: IManifest) => {
-    if (manifest.forceXHR === true) {
-        dbg(`Sending data directly with "XHR" because forceXHR is set to true.`);
+    if (manifest.forceXhr === true) {
+        dbg(`Sending data directly with "XHR" because forceXhr is set to true.`);
         await sendHttp(manifest);
+    // if sendBeacon fails we will fall back to XHR
     } else if (!(sendBeacon(manifest))) {
         dbg(`Okay, seems like "sendBeacon" failed. Will retry with "XHR".`);
         await sendHttp(manifest);

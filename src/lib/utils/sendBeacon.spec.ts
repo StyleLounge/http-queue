@@ -1,10 +1,3 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
 import * as sinon from "sinon";
 import IManifest from "../types/IManifest";
 import {default as send} from "./sendBeacon";
@@ -16,7 +9,7 @@ describe("sendBeacon ", () => {
         data: {
             mock: "data",
         },
-        forceXHR: false,
+        forceXhr: false,
         id: 1,
         url: "/some-mock-url",
         verb: "POST",
@@ -53,8 +46,8 @@ describe("sendBeacon ", () => {
         sinon.assert.calledOnce(global.navigator.sendBeacon);
     });
 
-    it("should send request with fetch when forceXHR is set to true.", async () => {
-        await send({ ...manifest, forceXHR: true });
+    it("should send request with fetch when forceXhr is set to true.", async () => {
+        await send({ ...manifest, forceXhr: true });
         sinon.assert.calledOnce(global.fetch);
         sinon.assert.notCalled(global.navigator.sendBeacon);
     });

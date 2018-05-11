@@ -8,7 +8,8 @@
   "scripts": {
     "get-version": "ci-toolkit get-version",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "prepush": "./scripts/lint --nofix && ./scripts/test && ./scripts/build"
+    "precommit": "./scripts/test",
+    "prepush": "./scripts/test && ./scripts/build"
   },
   "engines": {
     "node": ">=8.0.0"

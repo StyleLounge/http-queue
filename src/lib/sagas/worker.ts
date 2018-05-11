@@ -1,10 +1,3 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
 import * as debug from "debug";
 import { actionChannel, call, put, take } from "redux-saga/effects";
 

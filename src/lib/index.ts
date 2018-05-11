@@ -1,11 +1,3 @@
-/**
- *
- * stylelounge.de
- *
- * Copyright (C) SNM Style Net Media GmbH
- * MIT Licensed
- */
-
 import * as debug from "debug";
 
 import reducer from "./reducer";
@@ -25,7 +17,7 @@ interface IHttpQueue {
     drain: (timeout?: number) => Promise<void>;
 }
 
-const createHttpQueue = (forceXHR: boolean): IHttpQueue => {
+const createHttpQueue = (forceXhr: boolean): IHttpQueue => {
     const store = createStore({ reducer, middlewares });
 
     /**
@@ -34,7 +26,7 @@ const createHttpQueue = (forceXHR: boolean): IHttpQueue => {
     const schedule = (manifest: IRequest) => {
         store.dispatch(
             add({
-                forceXHR,
+                forceXhr,
                 id: numericRandomId(),
                 ...manifest,
             }),
@@ -54,7 +46,7 @@ const createHttpQueue = (forceXHR: boolean): IHttpQueue => {
         let drained = false;
 
         do {
-            await new Promise((resolve) => setTimeout(resolve, NAP_TIME));
+            await new Promise(resolve => setTimeout(resolve, NAP_TIME));
 
             actualCatNaps = actualCatNaps + 1;
 
