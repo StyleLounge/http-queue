@@ -1,6 +1,6 @@
 {
   "name": "@style/http-queue",
-  "version": "3.1.4-beta.2",
+  "version": "3.1.4",
   "description": "A fire-and-forget HTTP request queue implementation for browsers.",
   "author": "StyleLounge GmbH",
   "preferGlobal": false,
