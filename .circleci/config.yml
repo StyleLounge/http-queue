@@ -1,0 +1,62 @@
+version: 2.1
+orbs:
+  style: style/build-helpers@1.3.1
+
+workflows:
+  sl-app:
+    jobs:
+    - build:
+        context: ci-default-context-v1
+    - release:
+        context: ci-default-context-v1
+        requires:
+        - build
+        filters:
+          branches:
+            only:
+              - master
+              - /release\/.*/
+jobs:
+  build:
+    executor: style/nodejs-executor
+    steps:
+    - checkout
+    - setup_remote_docker
+    - style/authenticate_npm
+    - style/execute_ci_toolkit
+    - style/determine_image_name
+    - style/build_with_docker
+    - style/execute_tests_w_docker_compose
+    - style/persist_docker_image
+    - style/persist_bash_env
+    - persist_to_workspace:
+        root: ~/repo
+        paths:
+          # Contains unpushed "bump" commit
+          - ".git"
+          # Contains image/version/name-data
+          - ".contextrc"
+          # Contains built image
+          - "docker-cache"
+          # Necessary to determine subservice name and version
+          - "package.json"
+    - store_test_results:
+        path: coverage/tests/
+    - store_artifacts:
+        path: coverage/lcov-report/index.html
+        destination: coverage/
+    - store_artifacts:
+        path: coverage/lcov-report
+        destination: coverage/
+  release:
+    executor: style/nodejs-executor
+    steps:
+    - attach_workspace:
+        at: ~/repo
+    - setup_remote_docker
+    - style/authenticate_npm
+    - style/restore_bash_env
+    - style/restore_docker_image
+    - style/extract_app_from_docker_image
+    - style/push_package_to_npm
+    - style/push_repo_changes_to_git

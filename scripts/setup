@@ -1,7 +1,12 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -e
+rm -rf dist coverage
 
-rm -rf node_modules dist nyc_output
-
-./scripts/build
+if [[ -z "${CI}" ]]; then
+    echo "Detected no CI-environment, will use npm i"
+    npm i
+else
+    echo "Detected CI-environment, will use npm ci"
+    npm ci
+fi

@@ -1,11 +1,6 @@
 import { Action, handleActions, ReducerMap } from "redux-actions";
 
-import {
-    ADD,
-    REMOVE,
-    RESTORE,
-} from "../constants/actions";
-
+import { ADD, REMOVE, RESTORE } from "../constants/actions";
 import { IManifest, IState } from "../types";
 
 const createState = (): IState => ({

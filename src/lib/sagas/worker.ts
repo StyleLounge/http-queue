@@ -2,30 +2,23 @@ import * as debug from "debug";
 import { actionChannel, call, put, take } from "redux-saga/effects";
 
 import { IManifest } from "../types";
-
 import { remove } from "../actions";
-import {
-    ADD,
-    RESTORE,
-} from "../constants/actions";
-import sendBeacon from "../utils/sendBeacon";
+import { ADD, RESTORE } from "../constants/actions";
+import { send } from "../utils";
 
-const NAMESPACE = "@stylelounge/http-queue:sagas:worker";
+const NAMESPACE = "@SL/http-queue:sagas:worker";
 
 const dbg: debug.IDebugger = debug(NAMESPACE);
 
-function* worker(): any {
-    const channel = yield actionChannel([
-        ADD,
-        RESTORE,
-    ]);
+export function* worker(): any {
+    const channel = yield actionChannel([ADD, RESTORE]);
 
     while (true) {
         const action = yield take(channel);
         const manifest: IManifest = action.payload;
 
         try {
-            yield call(sendBeacon, manifest);
+            yield call(send, manifest);
 
             dbg("Performed HTTP request and everything went fine.");
         } catch (err) {
@@ -39,5 +32,3 @@ function* worker(): any {
         yield put(remove(manifest.id));
     }
 }
-
-export default worker;

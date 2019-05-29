@@ -5,8 +5,13 @@
     "sourceMap": true,
     "declaration": true,
     "rootDir": "./src",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "strictNullChecks": true,
     "sourceRoot": "./src",
     "outDir": "./dist",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noImplicitReturns": true,
     "forceConsistentCasingInFileNames": true,
     "pretty": true,
@@ -15,8 +20,8 @@
       "./node_modules/@style-types"
     ],
     "lib": [
-      "es2017",
-      "dom"
+      "dom",
+      "es2017"
     ]
   },
   "exclude": [
@@ -25,7 +30,6 @@
     "_builds",
     ".idea",
     "_steps",
-    ".wercker",
     "dist",
     "_cache",
     "kbomb-output",

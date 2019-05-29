@@ -1,8 +1,17 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -e
+export PATH=node_modules/.bin:$PATH
 
-npm install
+if [[ -z "${CI}" ]]; then
+    echo "Detected no CI-environment, will build with NODE_ENV=development"
+    NODE_ENV=development
+else
+    echo "Detected CI-environment, will build with NODE_ENV=production"
+    NODE_ENV=production
+fi
 
-rm -rf dist
-node_modules/.bin/tsc
+# removes built artifacts from tsc
+rm -rf ./dist
+# rebuild
+tsc

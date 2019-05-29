@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
+export PATH=node_modules/.bin:$PATH
 
 set -e
-
 fix="--fix"
-if [[ $* == *--nofix* ]]; then
+if [ "$1" == "--nofix" ]; then
     fix=""
 fi
 
-node_modules/.bin/tslint -c tslint.json --project tsconfig.json $fix
+tslint -c tslint.json --project tsconfig.json $fix

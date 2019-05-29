@@ -2,23 +2,22 @@ import * as debug from "debug";
 
 import reducer from "./reducer";
 import sagas from "./sagas";
-import createStore from "./store";
-
+import { configureStore } from "./store";
 import { add } from "./actions";
 import { IRequest } from "./types";
-import numericRandomId from "./utils/numericRandomId";
+import { numericRandomId } from "./utils";
 
-const dbg: debug.IDebugger = debug("@stylelounge/http-queue");
+const dbg: debug.IDebugger = debug("@SL/http-queue");
 
 const middlewares = { sagas };
 
-interface IHttpQueue {
+export interface IHttpQueue {
     schedule: (manifest: IRequest) => void;
     drain: (timeout?: number) => Promise<void>;
 }
 
-const createHttpQueue = (forceXhr: boolean): IHttpQueue => {
-    const store = createStore({ reducer, middlewares });
+export const createHttpQueue = (forceXhr: boolean): IHttpQueue => {
+    const store = configureStore({ reducer, middlewares });
 
     /**
      * Schedules a HTTP request.
@@ -59,6 +58,3 @@ const createHttpQueue = (forceXhr: boolean): IHttpQueue => {
 
     return { drain, schedule };
 };
-
-export { IHttpQueue };
-export default createHttpQueue;

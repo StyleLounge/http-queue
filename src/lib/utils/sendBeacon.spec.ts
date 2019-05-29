@@ -1,6 +1,6 @@
-import * as sinon from "sinon";
-import IManifest from "../types/IManifest";
-import {default as send} from "./sendBeacon";
+import { stub, assert } from "sinon";
+import { IManifest } from "../types";
+import { send } from "./sendBeacon";
 
 declare let global: any;
 
@@ -16,9 +16,9 @@ describe("sendBeacon ", () => {
     };
 
     beforeEach(() => {
-        global.Blob = sinon.stub();
-        global.navigator = { sendBeacon: sinon.stub() };
-        global.fetch = sinon.stub(global, "fetch");
+        global.Blob = stub();
+        global.navigator = { sendBeacon: stub() };
+        global.fetch = stub(global, "fetch");
     });
 
     afterEach(() => {
@@ -28,27 +28,27 @@ describe("sendBeacon ", () => {
     it("should send request with beacon", async () => {
         global.navigator.sendBeacon.returns(true);
         await send(manifest);
-        sinon.assert.calledOnce(global.navigator.sendBeacon);
-        sinon.assert.notCalled(global.fetch);
+        assert.calledOnce(global.navigator.sendBeacon);
+        assert.notCalled(global.fetch);
     });
 
     it("should send request with fetch when sendBeacon returns false", async () => {
         global.navigator.sendBeacon.returns(false);
         await send(manifest);
-        sinon.assert.calledOnce(global.fetch);
-        sinon.assert.calledOnce(global.navigator.sendBeacon);
+        assert.calledOnce(global.fetch);
+        assert.calledOnce(global.navigator.sendBeacon);
     });
 
     it("should send request with fetch when sendBeacon throws exception.", async () => {
         global.navigator.sendBeacon.throws();
         await send(manifest);
-        sinon.assert.calledOnce(global.fetch);
-        sinon.assert.calledOnce(global.navigator.sendBeacon);
+        assert.calledOnce(global.fetch);
+        assert.calledOnce(global.navigator.sendBeacon);
     });
 
     it("should send request with fetch when forceXhr is set to true.", async () => {
         await send({ ...manifest, forceXhr: true });
-        sinon.assert.calledOnce(global.fetch);
-        sinon.assert.notCalled(global.navigator.sendBeacon);
+        assert.calledOnce(global.fetch);
+        assert.notCalled(global.navigator.sendBeacon);
     });
 });
