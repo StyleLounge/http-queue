@@ -26,7 +26,7 @@ jobs:
     - style/execute_ci_toolkit
     - style/determine_image_name
     - style/build_with_docker
-    - style/execute_tests_w_docker_compose
+    - style/execute_tests_w_docker
     - style/persist_docker_image
     - style/persist_bash_env
     - persist_to_workspace:
