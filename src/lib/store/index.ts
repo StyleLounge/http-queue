@@ -1,4 +1,4 @@
-import { applyMiddleware, compose, createStore, Store, Action } from "redux";
+import { applyMiddleware, compose, createStore, Store, Action, Reducer } from "redux";
 
 import { IState } from "../types";
 import { bootstrap } from "./bootstrap";
@@ -11,7 +11,7 @@ export interface IMiddlewares {
 
 export interface IOptions {
     middlewares: IMiddlewares;
-    reducer: any;
+    reducer: Reducer<IState, Action>;
     initialState?: IState;
 }
 

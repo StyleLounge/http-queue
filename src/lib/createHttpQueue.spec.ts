@@ -2,7 +2,7 @@ import { stub, assert, SinonStub } from "sinon";
 
 import { createHttpQueue } from "./createHttpQueue";
 import { IRequest } from "./types";
-import { deepEqual } from "assert";
+import { deepStrictEqual } from "assert";
 
 declare let global: any;
 
@@ -36,7 +36,7 @@ describe("createHttpQueue", () => {
         await sleep(50); // sleep until some ticks later in order to process all reqs
         assert.notCalled(global.fetch);
         const sentMessages = (global.navigator.sendBeacon as SinonStub).getCalls().map(call => call.args[0]);
-        deepEqual(sentMessages, ["foo/bar", "foo2/bar"]);
+        deepStrictEqual(sentMessages, ["foo/bar", "foo2/bar"]);
     });
 
     it("optionally operates in xhr-mode", async () => {
@@ -50,6 +50,6 @@ describe("createHttpQueue", () => {
         await sleep(50); // sleep until some ticks later in order to process all reqs
         assert.notCalled(global.navigator.sendBeacon);
         const sentMessages = (global.fetch as SinonStub).getCalls().map(call => (call.args[0] as Request).url);
-        deepEqual(sentMessages, ["foo/bar", "foo2/bar"]);
+        deepStrictEqual(sentMessages, ["foo/bar", "foo2/bar"]);
     });
 });

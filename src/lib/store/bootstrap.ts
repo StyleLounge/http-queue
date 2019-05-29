@@ -7,7 +7,7 @@ import { Store } from "redux";
 
 const dbg = debug("@SL/http-queue:bootstrap");
 
-export function bootstrap(store: Store): any {
+export function bootstrap(store: Store): void {
     dbg("Check if we can restore an existing queue.");
 
     const items: IManifest[] = storage.getData() as IManifest[];
