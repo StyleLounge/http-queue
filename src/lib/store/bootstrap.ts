@@ -1,13 +1,13 @@
 import * as debug from "debug";
-import { put } from "redux-saga/effects";
 
 import { restore } from "../actions";
 import { IManifest } from "../types";
 import { storage } from "../utils";
+import { Store } from "redux";
 
-const dbg: debug.IDebugger = debug("@SL/http-queue:sagas:bootstrap");
+const dbg: debug.IDebugger = debug("@SL/http-queue:bootstrap");
 
-export function* bootstrap(): any {
+export function bootstrap(store: Store): any {
     dbg("Check if we can restore an existing queue.");
 
     const items: IManifest[] = storage.getData() as IManifest[];
@@ -18,8 +18,7 @@ export function* bootstrap(): any {
         for (const key in items) {
             if (items.hasOwnProperty(key)) {
                 const item = items[key];
-
-                yield put(restore(item));
+                store.dispatch(restore(item));
             }
         }
     } else {

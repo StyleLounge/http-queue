@@ -18,15 +18,13 @@ const sendHttp = async (manifest: IManifest) => {
 };
 
 const sendBeacon = (manifest: IManifest): boolean => {
-    const nav: Navigator = navigator;
-
-    if (nav.sendBeacon) {
+    if (navigator.sendBeacon) {
         const blob = new Blob([JSON.stringify(manifest.data || {})], { type: "application/json; charset=UTF-8" });
 
         dbg(`Sending data via "sendBeacon" (size: ${blob.size}).`);
 
         try {
-            return nav.sendBeacon(manifest.url, blob);
+            return navigator.sendBeacon(manifest.url, blob);
         } catch (e) {
             dbg(`Sending data via "sendBeacon" failed. Reason ${e}).`);
             return false;
@@ -37,7 +35,7 @@ const sendBeacon = (manifest: IManifest): boolean => {
 };
 
 export const send = async (manifest: IManifest) => {
-    if (manifest.forceXhr === true) {
+    if (manifest.forceXhr) {
         dbg(`Sending data directly with "XHR" because forceXhr is set to true.`);
         await sendHttp(manifest);
         // if sendBeacon fails we will fall back to XHR
