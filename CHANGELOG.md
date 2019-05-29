@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.3.0-beta.3"></a>
+# [3.3.0-beta.3](https://github.com/StyleLounge/http-queue/compare/v3.3.0-beta.2...v3.3.0-beta.3) (2019-05-29)
+
+
+### Bug Fixes
+
+* fixes typings ([718b305](https://github.com/StyleLounge/http-queue/commit/718b305))
+
+
+
 <a name="3.3.0-beta.2"></a>
 # [3.3.0-beta.2](https://github.com/StyleLounge/http-queue/compare/v3.3.0-beta.1...v3.3.0-beta.2) (2019-05-29)
 
