@@ -5,12 +5,6 @@
   "author": "StyleLounge GmbH",
   "preferGlobal": false,
   "contributors": [],
-  "scripts": {
-    "get-version": "ci-toolkit get-version",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
-    "precommit": "./scripts/lint",
-    "prepush": "./scripts/test && ./scripts/build"
-  },
   "engines": {
     "node": "^10.0.0",
     "npm": "^6.0.0"
@@ -29,8 +23,6 @@
   },
   "typings": "./dist/index.d.ts",
   "devDependencies": {
-    "@style/ci-toolkit": "^6.3.1",
-    "@style/xray": "^1.4.3",
     "@types/chai": "^4.1.7",
     "@types/debug": "^4.1.4",
     "@types/mocha": "^5.2.6",
