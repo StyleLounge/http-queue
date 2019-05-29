@@ -1,6 +1,6 @@
 {
   "name": "@style/http-queue",
-  "version": "3.2.0",
+  "version": "3.3.0-beta.4",
   "description": "A fire-and-forget HTTP request queue implementation for browsers.",
   "author": "StyleLounge GmbH",
   "preferGlobal": false,
@@ -32,10 +32,13 @@
     "chai": "^4.2.0",
     "commitlint": "^7.6.1",
     "husky": "^2.3.0",
+    "jsdom": "^15.1.1",
+    "jsdom-global": "^3.0.2",
     "mocha": "^6.1.4",
     "mocha-junit-reporter": "^1.22.0",
     "nyc": "^14.1.1",
     "prettier": "^1.17.1",
+    "rxjs": "^6.5.2",
     "sinon": "^7.3.2",
     "ts-node": "^8.2.0",
     "tslint": "^5.16.0",
@@ -50,7 +53,10 @@
     "isomorphic-fetch": "^2.2.1",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
-    "redux-saga": "^1.0.2"
+    "redux-observable": "^1.1.0"
+  },
+  "peerDependencies": {
+    "rxjs": "^6.5.2"
   },
   "husky": {
     "hooks": {
