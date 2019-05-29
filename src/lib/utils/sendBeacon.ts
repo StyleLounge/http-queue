@@ -3,7 +3,7 @@ import "isomorphic-fetch";
 
 import { IManifest } from "../types";
 
-const dbg: debug.IDebugger = debug("@SL/http-queue:utils:sendBeacon");
+const dbg = debug("@SL/http-queue:utils:sendBeacon");
 
 const sendHttp = async (manifest: IManifest) => {
     dbg(`Sending data via "XHR".`);

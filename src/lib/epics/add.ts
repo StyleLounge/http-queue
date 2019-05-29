@@ -7,7 +7,7 @@ import { IManifest } from "../types";
 import { storage } from "../utils";
 import { ADD } from "../constants/actions";
 
-const dbg: debug.IDebugger = debug("@SL/http-queue:epics:add");
+const dbg = debug("@SL/http-queue:epics:add");
 
 export const addToStorageEpic: Epic<Action<IManifest>, never> = action$ =>
     action$.ofType(ADD).pipe(

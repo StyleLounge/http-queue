@@ -7,7 +7,7 @@ import { add } from "./actions";
 import { IRequest } from "./types";
 import { numericRandomId } from "./utils";
 
-const dbg: debug.IDebugger = debug("@SL/http-queue");
+const dbg = debug("@SL/http-queue");
 
 const middlewares = { rootEpic };
 

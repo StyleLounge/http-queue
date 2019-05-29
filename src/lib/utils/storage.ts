@@ -1,7 +1,7 @@
 import * as debug from "debug";
 const Basil = require("basil.js");
 
-const dbg: debug.IDebugger = debug("@SL/http-queue:storage");
+const dbg = debug("@SL/http-queue:storage");
 
 const NAMESPACE = "@SL/http-queue";
 const TTL = 10000; /// (60 * 1000) * 60 * 24 * 2; // 2 days
@@ -61,4 +61,5 @@ export class StorageAbstraction {
     }
 }
 
-export const storage = new StorageAbstraction();
+let storageInstance;
+export const storage = storageInstance || (storageInstance = new StorageAbstraction());

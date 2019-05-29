@@ -5,7 +5,7 @@ import { IManifest } from "../types";
 import { storage } from "../utils";
 import { Store } from "redux";
 
-const dbg: debug.IDebugger = debug("@SL/http-queue:bootstrap");
+const dbg = debug("@SL/http-queue:bootstrap");
 
 export function bootstrap(store: Store): any {
     dbg("Check if we can restore an existing queue.");

@@ -7,7 +7,7 @@ import { REMOVE } from "../constants/actions";
 import { tap, ignoreElements } from "rxjs/operators";
 import { Epic } from "redux-observable";
 
-const dbg: debug.IDebugger = debug("@SL/http-queue:epics:remove");
+const dbg = debug("@SL/http-queue:epics:remove");
 
 export const removeFromStorageEpic: Epic<Action<number>, never> = action$ =>
     action$.ofType(REMOVE).pipe(

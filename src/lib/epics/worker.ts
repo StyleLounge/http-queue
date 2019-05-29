@@ -1,5 +1,6 @@
 import * as debug from "debug";
 import { Epic } from "redux-observable";
+import { map, concatMap } from "rxjs/operators";
 import { Action } from "redux-actions";
 
 import { IManifest } from "../types";
@@ -7,15 +8,13 @@ import { remove } from "../actions";
 import { ADD, RESTORE } from "../constants/actions";
 import { send } from "../utils";
 
-import { flatMap, map } from "rxjs/operators";
-
 const NAMESPACE = "@SL/http-queue:epics:send";
 
-const dbg: debug.IDebugger = debug(NAMESPACE);
+const dbg = debug(NAMESPACE);
 
 export const sendMessagesEpic: Epic<Action<any>, Action<number>> = action$ =>
     action$.ofType(ADD, RESTORE).pipe(
-        flatMap(async action => {
+        concatMap(async action => {
             const manifest: IManifest = action.payload;
 
             try {
