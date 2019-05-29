@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.3.0-beta.1"></a>
+# [3.3.0-beta.1](https://github.com/StyleLounge/http-queue/compare/v3.1.4...v3.3.0-beta.1) (2019-05-29)
+
+
+### Bug Fixes
+
+* cleans up package.json with unneeded statements ([118e7e5](https://github.com/StyleLounge/http-queue/commit/118e7e5))
+
+
+### Features
+
+* removes sagas in favor of redux-epics ([36ac4ca](https://github.com/StyleLounge/http-queue/commit/36ac4ca))
+* updates project to latest standards ([9831640](https://github.com/StyleLounge/http-queue/commit/9831640))
+
+
+
 <a name="3.1.4"></a>
 ## [3.1.4](https://github.com/StyleLounge/http-queue/compare/v3.1.4-beta.2...v3.1.4) (2018-05-11)
 
