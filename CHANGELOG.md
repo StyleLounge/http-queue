@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.3.0-beta.4"></a>
+# [3.3.0-beta.4](https://github.com/StyleLounge/http-queue/compare/v3.2.0...v3.3.0-beta.4) (2019-05-29)
+
+
+
+<a name="3.3.0-beta.3"></a>
+# [3.3.0-beta.3](https://github.com/StyleLounge/http-queue/compare/v3.3.0-beta.2...v3.3.0-beta.3) (2019-05-29)
+
+
+### Bug Fixes
+
+* fixes typings ([718b305](https://github.com/StyleLounge/http-queue/commit/718b305))
+
+
+
+<a name="3.3.0-beta.2"></a>
+# [3.3.0-beta.2](https://github.com/StyleLounge/http-queue/compare/v3.3.0-beta.1...v3.3.0-beta.2) (2019-05-29)
+
+
+### Bug Fixes
+
+* adds sleep  to wait for later js-eventloop-cycles (tests) ([ba73ecb](https://github.com/StyleLounge/http-queue/commit/ba73ecb))
+* orders events w/ concatMap instead of flatMap ([01674f4](https://github.com/StyleLounge/http-queue/commit/01674f4))
+
+
+
+<a name="3.3.0-beta.1"></a>
+# [3.3.0-beta.1](https://github.com/StyleLounge/http-queue/compare/v3.2.0-beta.0...v3.3.0-beta.1) (2019-05-29)
+
+
+### Features
+
+* removes sagas in favor of redux-epics ([36ac4ca](https://github.com/StyleLounge/http-queue/commit/36ac4ca))
+
+
+
 <a name="3.3.0-beta.3"></a>
 # [3.3.0-beta.3](https://github.com/StyleLounge/http-queue/compare/v3.3.0-beta.2...v3.3.0-beta.3) (2019-05-29)
 
