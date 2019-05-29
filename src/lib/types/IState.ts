@@ -1,7 +1,5 @@
-import IManifest from "./IManifest";
+import { IManifest } from "./IManifest";
 
-interface IState {
+export interface IState {
     manifests: IManifest[];
 }
-
-export default IState;

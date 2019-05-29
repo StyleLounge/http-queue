@@ -1,13 +1,12 @@
 import { expect } from "chai";
 
 import { add, remove, restore } from "../actions";
-
 import { IManifest, IState } from "../types";
 
 import reducer from "./";
 
 describe("The reducer", () => {
-    it("should be able to handle 'ADD'", (done) => {
+    it("should be able to handle 'ADD'", done => {
         const manifest: IManifest = {
             data: { foo: "bar" },
             forceXhr: false,
@@ -21,9 +20,7 @@ describe("The reducer", () => {
         };
 
         const after: IState = {
-            manifests: [
-                manifest,
-            ],
+            manifests: [manifest],
         };
 
         const action = add(manifest);
@@ -35,7 +32,7 @@ describe("The reducer", () => {
         done();
     });
 
-    it("should be able to handle 'REMOVE'", (done) => {
+    it("should be able to handle 'REMOVE'", done => {
         const manifest: IManifest = {
             data: { foo: "bar" },
             forceXhr: false,
@@ -61,7 +58,7 @@ describe("The reducer", () => {
         done();
     });
 
-    it("should be able to handle 'RESTORE'", (done) => {
+    it("should be able to handle 'RESTORE'", done => {
         const manifest: IManifest = {
             data: { foo: "bar" },
             forceXhr: false,
@@ -75,9 +72,7 @@ describe("The reducer", () => {
         };
 
         const after: IState = {
-            manifests: [
-                manifest,
-            ],
+            manifests: [manifest],
         };
 
         const action = restore(manifest);

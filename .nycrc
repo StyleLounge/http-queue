@@ -15,8 +15,6 @@
         "src/**/*.ts"
     ],
     "exclude": [
-        "src/**/models",
-        "src/**/test",
         "src/**/I*.ts",
         "src/**/*.spec.ts",
         "**/*.d.ts",

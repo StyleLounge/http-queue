@@ -1,10 +1,9 @@
 import * as debug from "debug";
-
 const Basil = require("basil.js");
 
-const dbg: debug.IDebugger = debug("@stylelounge/http-queue:storage");
+const dbg: debug.IDebugger = debug("@SL/http-queue:storage");
 
-const NAMESPACE = "@stylelounge/http-queue";
+const NAMESPACE = "@SL/http-queue";
 const TTL = 10000; /// (60 * 1000) * 60 * 24 * 2; // 2 days
 
 interface IStorageState {
@@ -13,7 +12,6 @@ interface IStorageState {
 }
 
 export class StorageAbstraction {
-
     private storage = new Basil();
 
     constructor() {
@@ -63,4 +61,4 @@ export class StorageAbstraction {
     }
 }
 
-export default new StorageAbstraction();
+export const storage = new StorageAbstraction();

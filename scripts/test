@@ -1,9 +1,15 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -e
-
-./scripts/lint
-
 export PATH=node_modules/.bin:$PATH
 
-nyc _mocha --require ts-node/register 'src/**/*.spec.ts'
+if [[ -z "${CI}" ]]; then
+    echo "Detected no CI-environment, will test with ts-node"
+    nyc _mocha --register ts-node/register 'src/**/*.spec.ts'
+else
+    echo "Detected CI-environment, will test directly"
+    [[ -f /wait ]] && /wait
+    MOCHA_FILE=coverage/tests/mocha/results.xml nyc _mocha --reporter mocha-junit-reporter 'dist/**/*.spec.js'
+fi
+
+

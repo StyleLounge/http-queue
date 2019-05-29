@@ -1,62 +1,64 @@
 {
   "name": "@style/http-queue",
-  "version": "3.1.4",
+  "version": "3.2.0-beta.0",
   "description": "A fire-and-forget HTTP request queue implementation for browsers.",
   "author": "StyleLounge GmbH",
   "preferGlobal": false,
   "contributors": [],
-  "scripts": {
-    "get-version": "ci-toolkit get-version",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
-    "precommit": "./scripts/lint",
-    "prepush": "./scripts/test && ./scripts/build"
-  },
   "engines": {
-    "node": ">=8.0.0"
+    "node": "^10.0.0",
+    "npm": "^6.0.0"
   },
-  "main": "./dist/index.js",
+  "main": "dist/lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StyleLounge/http-queue.git"
   },
-  "keywords": [
-    "http",
-    "queue",
-    "browsers"
-  ],
-  "license": "SEE LICENSE IN license.md",
+  "keywords": [],
+  "license": "SEE LICENSE IN LICENSE.md",
   "homepage": "https://github.com/StyleLounge/http-queue#readme",
-  "types": "./dist/index.d.ts",
+  "types": "dist/lib/index.d.ts",
   "typescript": {
     "definition": "dist/index.d.ts"
   },
   "typings": "./dist/index.d.ts",
   "devDependencies": {
-    "@style/ci-toolkit": "^6.3.1",
-    "@style/xray": "^1.4.3",
-    "@types/chai": "^4.1.3",
-    "@types/debug": "0.0.30",
-    "@types/mocha": "^5.2.0",
-    "@types/node": "^10.0.6",
-    "@types/redux-actions": "^2.3.0",
-    "@types/sinon": "^4.3.1",
-    "chai": "^4.1.2",
-    "commitlint": "^6.2.0",
-    "husky": "^0.14.3",
-    "mocha": "^5.1.1",
-    "nyc": "^11.7.2",
-    "sinon": "^5.0.7",
-    "standard-version": "git+ssh://git@github.com/stylelounge/standard-version.git#stylelounge",
-    "ts-node": "^6.0.3",
-    "tslint": "^5.10.0",
-    "typescript": "^2.5.3"
+    "@types/chai": "^4.1.7",
+    "@types/debug": "^4.1.4",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^12.0.3",
+    "@types/redux-actions": "^2.6.1",
+    "@types/sinon": "^7.0.12",
+    "chai": "^4.2.0",
+    "commitlint": "^7.6.1",
+    "husky": "^2.3.0",
+    "mocha": "^6.1.4",
+    "mocha-junit-reporter": "^1.22.0",
+    "nyc": "^14.1.1",
+    "prettier": "^1.17.1",
+    "sinon": "^7.3.2",
+    "ts-node": "^8.2.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.4.5"
   },
   "dependencies": {
-    "basil.js": "^0.4.4",
-    "debug": "^2.2.0",
+    "basil.js": "^0.4.10",
+    "debug": "^4.1.1",
     "isomorphic-fetch": "^2.2.1",
-    "redux": "^3.5.2",
-    "redux-actions": "^0.10.1",
-    "redux-saga": "0.11.0"
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.5",
+    "redux-saga": "^1.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-push": "./scripts/lint --nofix && ./scripts/test && ./scripts/build"
+    }
+  },
+  "directories": {
+    "lib": "src/lib/index.ts"
   }
 }

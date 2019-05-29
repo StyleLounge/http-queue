@@ -1,3 +1,1 @@
-import queue from "./lib";
-
-export default queue;
+export * from "./lib";

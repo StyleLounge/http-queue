@@ -1,9 +1,3 @@
-import IManifest from "./IManifest";
-import IRequest from "./IRequest";
-import IState from "./IState";
-
-export {
-    IManifest,
-    IRequest,
-    IState,
-};
+export * from "./IManifest";
+export * from "./IRequest";
+export * from "./IState";

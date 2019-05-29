@@ -1,4 +1,5 @@
 import { Action, createAction } from "redux-actions";
+
 import { RESTORE } from "../constants/actions";
 import { IManifest } from "../types";
 

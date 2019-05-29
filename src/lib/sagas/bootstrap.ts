@@ -2,12 +2,12 @@ import * as debug from "debug";
 import { put } from "redux-saga/effects";
 
 import { restore } from "../actions";
-import IManifest from "../types/IManifest";
-import storage from "../utils/storage";
+import { IManifest } from "../types";
+import { storage } from "../utils";
 
-const dbg: debug.IDebugger = debug("@stylelounge/http-queue:sagas:bootstrap");
+const dbg: debug.IDebugger = debug("@SL/http-queue:sagas:bootstrap");
 
-function* bootstrap(): any {
+export function* bootstrap(): any {
     dbg("Check if we can restore an existing queue.");
 
     const items: IManifest[] = storage.getData() as IManifest[];
@@ -26,5 +26,3 @@ function* bootstrap(): any {
         dbg("Found no items to restore. Waiting for new items ...");
     }
 }
-
-export default bootstrap;
